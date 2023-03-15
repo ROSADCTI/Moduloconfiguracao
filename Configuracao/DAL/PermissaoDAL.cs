@@ -29,7 +29,7 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
-        public List<Usuario> BuscarPorId(int _id)
+        public List<Permissao> BuscarPorId(int _id)
         {
             throw new NotImplementedException();
         }
