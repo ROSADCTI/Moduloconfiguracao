@@ -1,9 +1,11 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace DAL
 {
@@ -11,7 +13,7 @@ namespace DAL
     {
         public void inserir(GrupoUsuario _grupousuario)
         {
-
+            
         }
         public void Alterar(GrupoUsuario _grupousuario)
         {
