@@ -46,8 +46,29 @@ namespace DAL
 
         }
         public void Excluir (int _id)
-            
         {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao); 
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "DELETE FROM Usuario WHERE ID = @Id";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@Id", _id);
+
+                cmd.Connection = cn;
+                cn.Open ();
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+            throw new Exception ("ocorreu um erro na tentativa de exluir um usuário.por favor verifique sua conexão",ex);
+            }
+            finally
+            {
+                cn.Close ();
+            }
 
         }
         public List<Usuario> BuscarPorTodos()
