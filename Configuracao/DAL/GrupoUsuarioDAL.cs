@@ -19,7 +19,7 @@ namespace DAL
         {
 
         }
-        public void Deletar(int _id)
+        public void Excluir(int _id)
         {
 
         }

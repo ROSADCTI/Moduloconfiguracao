@@ -1,6 +1,7 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,19 +12,20 @@ namespace DAL
     {
         public void inserir(Permissao _permissao)
         {
-
+            
         }
         public void Alterar(Permissao _permissao)
         {
 
         }
-        public void Deletar(int _id)
+        public void Excluir(int _id)
         {
 
         }
         public List<Permissao> BuscarPorTodos()
         {
-            throw new NotImplementedException();
+            
+           
         }
         public List<Permissao> BuscarPorDescricao(string _descricao)
         {
@@ -31,7 +33,8 @@ namespace DAL
         }
         public List<Permissao> BuscarPorId(int _id)
         {
-            throw new NotImplementedException();
+                
+            }
         }
     }
 }

@@ -73,15 +73,70 @@ namespace DAL
         }
         public List<Usuario> BuscarPorTodos()
         {
-            throw new NotImplementedException();
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id, Nome, NomeUsuario, Email,CPF,Ativo,Senha,FROM usuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        usuario.Senha = rd["Senha"].ToString();
+
+                        usuarios.Add(usuario);
+                    }
+                }
+                return usuarios;
+            }    
+               catch (Exception ex) 
+            {
+                throw new Exception("Ocorreu jem erro na tentetiva jde buscar dos dados. Por favor verifique sua conexao", ex);
+            }
         }
-        public List<Usuario> BuscarPorNome(string _nome)
+
+
+
+           public List<Usuario> BuscarPorNome(string _nome)
         {
-            throw new NotImplementedException();
+           List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario = new Usuario();
+            SqlCommand cmd = new SqlCommand(Conexao.stringDeConexao);
+            try 
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = GCNotificationStatus;
+                cmd.CommandText
+            }
         }
         public List<Usuario> BuscarPorId(int _id)
         {
-            throw new NotImplementedException();
-        }
+
+            Usuario usuario = new Usuario();
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("Id", _id);
+
+                cn.Open();
+            }
     }   
 }
