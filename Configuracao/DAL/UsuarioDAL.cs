@@ -185,6 +185,52 @@ namespace DAL
                 cn.Close();
             }
         }
+
+        public List<Usuario> BuscarPorNomeUsuario(string _nomeUsuario)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario = new Usuario();
+
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo FROM Usuario WHERE NomeUsuario LIKE = @nomeusuario" ;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@nomeusuario", "%" + _nomeUsuario + "%");
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        usuario.Senha = rd["Senha"].ToString();
+
+                        usuarios.Add(usuario);
+
+                    }
+                }
+
+                return usuarios;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
         public List<Usuario> BuscarPorId(int _id)
         {
             List<Usuario> usuarios = new List<Usuario>();
