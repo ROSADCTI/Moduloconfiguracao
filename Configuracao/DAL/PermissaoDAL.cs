@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -78,8 +79,8 @@ namespace DAL
 
                 cmd.Connection = cn;
                 cn.Open();
-
                 cmd.ExecuteNonQuery();
+
             }
             catch (Exception ex)
             {
@@ -134,7 +135,7 @@ namespace DAL
 
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             List<Permissao> permissoes = new List<Permissao>();
-            Permissao permissao;
+            Permissao permissao = new Permissao ();
 
 
             try
@@ -149,7 +150,7 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
-                        permissao = new Permissao();
+                        
                         permissao.IdPermissao = Convert.ToInt32(rd["Id"]);
                         permissao.descricao = rd["descricao "].ToString();
                         permissoes.Add(permissao);
