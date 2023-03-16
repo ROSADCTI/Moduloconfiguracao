@@ -9,7 +9,7 @@ namespace Models
     public class GrupoUsuario
     {
         public int IdGupo{ get; set; }
-        public string NameGrupo { get; set; }
+        public string NomeGrupo { get; set; }
         public List<Permissao> Permitir { get; set; }
     }
 }
