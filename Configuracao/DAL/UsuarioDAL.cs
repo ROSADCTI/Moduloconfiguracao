@@ -19,7 +19,7 @@ namespace DAL
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"INSERT INTO Usuario(Nome, NomeUsuario, Email,CPF,Senha,Ativo)
                                   VALEUS(@Nome,@NomeUsuario,@Email,@CPF,@Senha,@Ativo )";
-                cmd.Parameters.AddWithValue("@Nome",_usuario.Nome);
+                cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
                 cmd.Parameters.AddWithValue("@CPF", _usuario.Cpf);
@@ -31,23 +31,50 @@ namespace DAL
 
 
             }
-             catch(Exception ex)
+            catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão",ex);
+                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
             }
             finally
             {
                 cn.Close();
             }
-            
-        }    
-        public void Alterar(Usuario _usuario)
-        {
 
         }
-        public void Excluir (int _id)
+        public void Alterar(Usuario _usuario)
         {
-            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao); 
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "update Usuario set Nome = @nome,NomeUsuario = @NomeUsario,Email = @Email,Cpf =@Cpf,Senha = @Senha,Ativo = @Ativa WHERE id = @ID";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
+                cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
+                cmd.Parameters.AddWithValue("@Email", _usuario.Email);
+                cmd.Parameters.AddWithValue("@CPF", _usuario.Cpf);
+                cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
+                cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
+                cmd.Connection = cn;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        public void Excluir(int _id)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
@@ -57,17 +84,17 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Id", _id);
 
                 cmd.Connection = cn;
-                cn.Open ();
+                cn.Open();
 
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-            throw new Exception ("ocorreu um erro na tentativa de exluir um usuário.por favor verifique sua conexão",ex);
+                throw new Exception("ocorreu um erro na tentativa de exluir um usuário.por favor verifique sua conexão", ex);
             }
             finally
             {
-                cn.Close ();
+                cn.Close();
             }
 
         }
@@ -75,7 +102,7 @@ namespace DAL
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             List<Usuario> usuarios = new List<Usuario>();
-            Usuario usuario
+            Usuario usuario;
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -101,32 +128,68 @@ namespace DAL
                     }
                 }
                 return usuarios;
-            }    
-               catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
-                throw new Exception("Ocorreu jem erro na tentetiva jde buscar dos dados. Por favor verifique sua conexao", ex);
+                throw new Exception("Ocorreu um erro na tentetiva jde buscar dos dados. Por favor verifique sua conexao", ex);
+            }
+            finally
+            {
+                cn.Close();
             }
         }
 
-
-
-           public List<Usuario> BuscarPorNome(string _nome)
+        public List<Usuario> BuscarPorNome(string _nome)
         {
-           List<Usuario> usuarios = new List<Usuario>();
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            List<Usuario> usuarios = new List<Usuario>();
             Usuario usuario = new Usuario();
-            SqlCommand cmd = new SqlCommand(Conexao.stringDeConexao);
-            try 
+
+
+            try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = GCNotificationStatus;
-                cmd.CommandText
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Nome", "%" + _nome + "%");
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        usuario.Senha = rd["Senha"].ToString();
+
+                        usuarios.Add(usuario);
+
+                    }
+                }
+
+                return usuarios;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+            }
+            finally
+            {
+                cn.Close();
             }
         }
         public List<Usuario> BuscarPorId(int _id)
         {
-
+            List<Usuario> usuarios = new List<Usuario>();
             Usuario usuario = new Usuario();
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -137,6 +200,34 @@ namespace DAL
                 cmd.Parameters.AddWithValue("Id", _id);
 
                 cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        usuario.Senha = rd["Senha"].ToString();
+
+                        usuarios.Add(usuario);
+
+                    }
+                }
+
+                return usuarios;
             }
-    }   
+            catch (Exception ex)
+            {
+                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+    }
 }
