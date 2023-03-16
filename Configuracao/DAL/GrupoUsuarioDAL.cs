@@ -39,7 +39,7 @@ namespace DAL
             }
 
         }
-           
+            
 
         }
         public void Alterar(GrupoUsuario _grupousuario)
