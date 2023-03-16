@@ -39,14 +39,7 @@ namespace DAL
             }
 
         }
-            catch (Exception ex)
-            {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
-            }
-            finally
-            {
-                cn.Close();
-            }
+           
 
         }
         public void Alterar(GrupoUsuario _grupousuario)
