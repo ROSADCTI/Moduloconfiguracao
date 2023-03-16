@@ -50,7 +50,8 @@ namespace DAL
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = "update Usuario set Nome = @nome,NomeUsuario = @NomeUsario,Email = @Email,Cpf =@Cpf,Senha = @Senha,Ativo = @Ativa WHERE id = @ID";
                 cmd.CommandType = System.Data.CommandType.Text;
-
+                
+                cmd.Parameters.AddWithValue("@Id", _usuario.Id);
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
@@ -222,7 +223,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
             }
             finally
             {
