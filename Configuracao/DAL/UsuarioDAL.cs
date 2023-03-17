@@ -74,6 +74,7 @@ namespace DAL
             }
         }
         public void Excluir(int _id)
+        
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             try
@@ -108,7 +109,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id, Nome, NomeUsuario, Email,CPF,Ativo,Senha,FROM usuario";
+                cmd.CommandText = "SELECT Id, Nome, NomeUsuario, Email,CPF,Ativo,Senha FROM Usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -133,6 +134,50 @@ namespace DAL
             catch (Exception ex)
             {
                 throw new Exception("Ocorreu um erro na tentetiva jde buscar dos dados. Por favor verifique sua conexao", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        public List<Usuario> BuscarPorCPF(string _cpf)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario = new Usuario();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo,Senha FROM Usuario WHere CPF = @cpf";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@CPF", "%" + _cpf + "%");
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        usuario.Senha = rd["Senha"].ToString();
+
+                        usuarios.Add(usuario);
+
+                    }
+                }
+
+                return usuarios;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
             }
             finally
             {
