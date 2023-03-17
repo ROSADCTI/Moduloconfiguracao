@@ -60,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBuscarUsuario.resx">
+      <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTelaPrincipal.resx">
       <DependentUpon>FormTelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>

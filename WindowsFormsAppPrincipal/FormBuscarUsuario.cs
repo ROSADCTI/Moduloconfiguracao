@@ -24,5 +24,12 @@ namespace WindowsFormsAppPrincipal
             usuario.Senha = "157861";
             usuario.Email = "contato@gmail.com";
         }
+
+        private void buttonExcluirUsuario_Click(object sender, EventArgs e)
+        {
+           if(usuarioBindingSource.Count)
+                MessageBox.Show("Não existe registro para se existe.
+            return;
+         }
     }
 }
