@@ -40,9 +40,15 @@ namespace BLL
 
         public List<Permissao> BuscarPorDescricao(string _descricao)
         {
+
             return new PermissaoDAL().BuscarPorDescricao(_descricao);
         }
-        
+        public List<Permissao> BuscarPorTodos()
+        {
+            return new PermissaoDAL().BuscarPorTodos();
+        }
+
+
         private void ValidarDados(Permissao _permissao)
 
         {
