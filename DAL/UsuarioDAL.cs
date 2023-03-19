@@ -10,7 +10,7 @@ namespace DAL
 {
     public class UsuarioDAL
     {
-        public void inserir(Usuario _usuario)
+        public void Inserir(Usuario _usuario)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
 
@@ -18,11 +18,11 @@ namespace DAL
             {
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"INSERT INTO Usuario(Nome, NomeUsuario, Email,CPF,Senha,Ativo)
-                                  VALEUS(@Nome,@NomeUsuario,@Email,@CPF,@Senha,@Ativo )";
+                                  VALUES(@Nome,@NomeUsuario,@Email,@CPF,@Senha,@Ativo )";
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
-                cmd.Parameters.AddWithValue("@CPF", _usuario.Cpf);
+                cmd.Parameters.AddWithValue("@CPF", _usuario.CPF);
                 cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
                 cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
                 cmd.Connection = cn;
@@ -31,9 +31,9 @@ namespace DAL
 
 
             }
-            catch (Exception ex)
+             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu um erro ao tentar inserir um usuário no banco de dados: ", ex);
             }
             finally
             {
@@ -48,14 +48,14 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "update Usuario set Nome = @nome,NomeUsuario = @NomeUsario,Email = @Email,Cpf =@Cpf,Senha = @Senha,Ativo = @Ativa WHERE id = @ID";
+                cmd.CommandText = "update Usuario set Nome = @nome,NomeUsuario = @NomeUsario,Email = @Email,CPF =@Cpf,Senha = @Senha,Ativo = @Ativa WHERE id = @ID";
                 cmd.CommandType = System.Data.CommandType.Text;
                 
                 cmd.Parameters.AddWithValue("@Id", _usuario.Id);
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
-                cmd.Parameters.AddWithValue("@CPF", _usuario.Cpf);
+                cmd.Parameters.AddWithValue("@CPF", _usuario.CPF);
                 cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
                 cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
                 cmd.Connection = cn;
@@ -104,7 +104,7 @@ namespace DAL
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             List<Usuario> usuarios = new List<Usuario>();
-            Usuario usuario;
+            Usuario usuario = new Usuario();
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -117,15 +117,14 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
-                        usuario = new Usuario();
+                       
                         usuario.Id = Convert.ToInt32(rd["Id"]);
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.Email = rd["Email"].ToString();
-                        usuario.Cpf = rd["CPF"].ToString();
+                        usuario.CPF = rd["CPF"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
-
                         usuarios.Add(usuario);
                     }
                 }
@@ -163,7 +162,7 @@ namespace DAL
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.Email = rd["Email"].ToString();
-                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
 
@@ -209,7 +208,7 @@ namespace DAL
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.Email = rd["Email"].ToString();
-                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.CPF= rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
 
@@ -255,7 +254,7 @@ namespace DAL
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.Email = rd["Email"].ToString();
-                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
 
@@ -281,6 +280,7 @@ namespace DAL
             List<Usuario> usuarios = new List<Usuario>();
             Usuario usuario = new Usuario();
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            
 
             try
             {
@@ -296,12 +296,11 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
-                        usuario = new Usuario();
                         usuario.Id = Convert.ToInt32(rd["Id"]);
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.Email = rd["Email"].ToString();
-                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
 

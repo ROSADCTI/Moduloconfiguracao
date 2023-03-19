@@ -21,10 +21,26 @@ namespace WindowsFormsAppPrincipal
             usuario.NomeUsuario = "Rosilene";
             usuario.Nome = "Rosa";
             usuario.Email = "Clementerosa@gmail.com";
-            usuario.Cpf = "456.556.015.91";
+            usuario.CPF = "456.556.015.91";
             usuario.Senha = "R12356c";
             usuario.Ativo = true;
+
             
+            usuario.NomeUsuario = "WilllianAraujo";
+            usuario.Nome = "Willian";
+            usuario.Email = "Solbrilha@gmail.com";
+            usuario.CPF = "564.556.234.00";
+            usuario.Senha = "5689";
+            usuario.Ativo = true;
+
+            
+            usuario.NomeUsuario = "Solangesilva";
+            usuario.Nome = "Solange";
+            usuario.Email = "ceuazul@hotmail.com";
+            usuario.CPF = "333.286.015.30";
+            usuario.Senha = "569201";
+            usuario.Ativo = true;
+
             new UsuarioBLL(). Inserir(usuario);
         }
 
