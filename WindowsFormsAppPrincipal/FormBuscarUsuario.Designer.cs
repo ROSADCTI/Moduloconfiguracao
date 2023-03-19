@@ -48,8 +48,8 @@
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.buttonAlterar = new System.Windows.Forms.Button();
             this.buttonExcluirusauario = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonAdicionagrupousuario = new System.Windows.Forms.Button();
+            this.buttonExcluirgrupousuario = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
@@ -200,6 +200,7 @@
             this.buttonBuscar.TabIndex = 4;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // buttonAlterar
             // 
@@ -218,30 +219,31 @@
             this.buttonExcluirusauario.TabIndex = 4;
             this.buttonExcluirusauario.Text = "Excluir";
             this.buttonExcluirusauario.UseVisualStyleBackColor = true;
+            this.buttonExcluirusauario.Click += new System.EventHandler(this.buttonExcluirusauario_Click);
             // 
-            // button4
+            // buttonAdicionagrupousuario
             // 
-            this.button4.Location = new System.Drawing.Point(881, 72);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 26);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button1";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonAdicionagrupousuario.Location = new System.Drawing.Point(854, 65);
+            this.buttonAdicionagrupousuario.Name = "buttonAdicionagrupousuario";
+            this.buttonAdicionagrupousuario.Size = new System.Drawing.Size(102, 33);
+            this.buttonAdicionagrupousuario.TabIndex = 4;
+            this.buttonAdicionagrupousuario.Text = "Adcionar";
+            this.buttonAdicionagrupousuario.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonExcluirgrupousuario
             // 
-            this.button5.Location = new System.Drawing.Point(781, 72);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 26);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "button1";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonExcluirgrupousuario.Location = new System.Drawing.Point(757, 65);
+            this.buttonExcluirgrupousuario.Name = "buttonExcluirgrupousuario";
+            this.buttonExcluirgrupousuario.Size = new System.Drawing.Size(75, 33);
+            this.buttonExcluirgrupousuario.TabIndex = 4;
+            this.buttonExcluirgrupousuario.Text = "Excluir";
+            this.buttonExcluirgrupousuario.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(582, 65);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(111, 33);
+            this.button6.Size = new System.Drawing.Size(98, 33);
             this.button6.TabIndex = 4;
             this.button6.Text = "Adicionar";
             this.button6.UseVisualStyleBackColor = true;
@@ -252,8 +254,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 345);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.buttonExcluirgrupousuario);
+            this.Controls.Add(this.buttonAdicionagrupousuario);
             this.Controls.Add(this.buttonExcluirusauario);
             this.Controls.Add(this.buttonAlterar);
             this.Controls.Add(this.buttonBuscar);
@@ -297,8 +299,8 @@
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Button buttonAlterar;
         private System.Windows.Forms.Button buttonExcluirusauario;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonAdicionagrupousuario;
+        private System.Windows.Forms.Button buttonExcluirgrupousuario;
         private System.Windows.Forms.Button button6;
     }
 }

@@ -62,19 +62,20 @@
             // usuárioToolStripMenuItem
             // 
             this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
-            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.usuárioToolStripMenuItem.Text = "Usuário";
+            this.usuárioToolStripMenuItem.Click += new System.EventHandler(this.usuárioToolStripMenuItem_Click);
             // 
             // permissãoToolStripMenuItem
             // 
             this.permissãoToolStripMenuItem.Name = "permissãoToolStripMenuItem";
-            this.permissãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.permissãoToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.permissãoToolStripMenuItem.Text = "Permissão";
             // 
             // grupoDeUsuárioToolStripMenuItem
             // 
             this.grupoDeUsuárioToolStripMenuItem.Name = "grupoDeUsuárioToolStripMenuItem";
-            this.grupoDeUsuárioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grupoDeUsuárioToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.grupoDeUsuárioToolStripMenuItem.Text = "Grupo de Usuário";
             // 
             // FormTelaprincipal
@@ -88,7 +89,7 @@
             this.ForeColor = System.Drawing.Color.DarkSeaGreen;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormTelaprincipal";
             this.Text = "Tela Principal";
             this.Load += new System.EventHandler(this.FormTelaprincipal_Load);
