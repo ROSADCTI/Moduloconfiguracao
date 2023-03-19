@@ -44,7 +44,9 @@ namespace WindowsFormsAppPrincipal
             MessageBox.Show("Registro excluído com sucesso!");
         }
 
+        private void FormBuscarUsuario_Load(object sender, EventArgs e)
+        {
 
-       
+        }
     }
 }
