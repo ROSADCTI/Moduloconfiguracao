@@ -14,21 +14,18 @@ namespace WindowsFormsAppPrincipal
 {
     public partial class FormBuscarUsuario : Form
     {
-        private object RemoveCurrent;
-
         public FormBuscarUsuario()
+
         {
             InitializeComponent();
-            
         }
-
+            
         private void buttonBuscar_Click(object sender, EventArgs e)
 
         {
             
             usuarioBindingSource.DataSource = new UsuarioBLL().BuscarTodos();
         }
-
         private void buttonExcluirusauario_Click(object sender, EventArgs e)
         {
             if (usuarioBindingSource.Count <= 0)
@@ -46,5 +43,8 @@ namespace WindowsFormsAppPrincipal
 
             MessageBox.Show("Registro excluído com sucesso!");
         }
+
+
+       
     }
 }
