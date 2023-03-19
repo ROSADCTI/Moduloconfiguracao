@@ -10,19 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
 {
-    public partial class FormTelaPrincipal : Form
+    public partial class FormTelaprincipal : Form
     {
-        public FormTelaPrincipal()
+        public FormTelaprincipal()
         {
             InitializeComponent();
         }
 
-        private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FormTelaprincipal_Load(object sender, EventArgs e)
         {
-            using(FormBuscarUsuario frm = new FormBuscarUsuario())
-            {
-                frm.ShowDialog();
-            }
+
         }
     }
 }

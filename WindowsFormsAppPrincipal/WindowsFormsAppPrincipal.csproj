@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A8D0EFB-1308-40CE-BEF5-F363C025EB16}</ProjectGuid>
+    <ProjectGuid>{D36A3BF7-CBDF-4270-933C-8E6694146A04}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsAppPrincipal</RootNamespace>
     <AssemblyName>WindowsFormsAppPrincipal</AssemblyName>
@@ -52,19 +52,19 @@
     <Compile Include="FormBuscarUsuario.Designer.cs">
       <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTelaPrincipal.cs">
+    <Compile Include="FormTelaprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTelaPrincipal.Designer.cs">
-      <DependentUpon>FormTelaPrincipal.cs</DependentUpon>
+    <Compile Include="FormTelaprincipal.Designer.cs">
+      <DependentUpon>FormTelaprincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBuscarUsuario.resx">
       <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTelaPrincipal.resx">
-      <DependentUpon>FormTelaPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="FormTelaprincipal.resx">
+      <DependentUpon>FormTelaprincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

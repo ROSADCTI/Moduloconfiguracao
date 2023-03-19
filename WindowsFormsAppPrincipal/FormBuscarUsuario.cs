@@ -1,5 +1,4 @@
-﻿using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,20 +15,6 @@ namespace WindowsFormsAppPrincipal
         public FormBuscarUsuario()
         {
             InitializeComponent();
-            Usuario usuario = new Usuario();
-            usuario.Nome = "Rosilene";
-            usuario.NomeUsuario = "Test";
-            usuario.Ativo = true;
-            usuario.Cpf = "415.485.148.84";
-            usuario.Senha = "157861";
-            usuario.Email = "contato@gmail.com";
         }
-
-        private void buttonExcluirUsuario_Click(object sender, EventArgs e)
-        {
-           if(usuarioBindingSource.Count)
-                MessageBox.Show("Não existe registro para se existe.
-            return;
-         }
     }
 }
