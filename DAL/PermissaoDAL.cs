@@ -45,7 +45,7 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "update Usuario set Descricao = @Descricao";
+                cmd.CommandText = "update Usuario set Descricao = @Descricao WHERE Id = @id";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Id", _permissao.IdPermissao);
@@ -72,7 +72,7 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "DELETE FROM Permissao WHERE ID = @Id";
+                cmd.CommandText = "DELETE FROM Permissao WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Id", _id);

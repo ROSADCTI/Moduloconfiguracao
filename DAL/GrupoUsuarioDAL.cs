@@ -54,7 +54,7 @@ namespace DAL
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Id", _grupousuario.IdGrupo);
-                cmd.Parameters.AddWithValue("@nomegrupo", _grupousuario.NomeGrupo);
+                cmd.Parameters.AddWithValue("@NomeGrupo", _grupousuario.NomeGrupo);
 
                 cmd.Connection = cn;
                 cn.Open();
@@ -78,7 +78,7 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "DELETE FROM GrupoUsuario WHERE ID = @Id";
+                cmd.CommandText = "DELETE FROM GrupoUsuario WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Id", _id);
@@ -107,7 +107,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id, nomegrupo";
+                cmd.CommandText = "SELECT Id, NomeGrupo";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -117,7 +117,7 @@ namespace DAL
                     {
                         grupousuario = new GrupoUsuario();
                         grupousuario.IdGrupo = Convert.ToInt32(rd["Id"]);
-                        grupousuario.NomeGrupo = rd["nomegrupo "].ToString();
+                        grupousuario.NomeGrupo = rd["NomeGrupo "].ToString();
 
 
 
@@ -156,7 +156,7 @@ namespace DAL
                     while (rd.Read())
                     {
                         grupousuario.IdGrupo = Convert.ToInt32(rd["Id"]);
-                        grupousuario.NomeGrupo = rd["nomegrupo "].ToString();
+                        grupousuario.NomeGrupo = rd["NomeGrupo "].ToString();
                         grupousuarios.Add(grupousuario);
                     }
                 }
@@ -185,7 +185,7 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,nomegrupo";
+                cmd.CommandText = "SELECT Id,NomeGrupo";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("Id", _id);
                 cn.Open();
@@ -197,7 +197,7 @@ namespace DAL
                     {
 
                         grupousuario.IdGrupo = Convert.ToInt32(rd["Id"]);
-                        grupousuario.NomeGrupo = rd["nomegrupo "].ToString();
+                        grupousuario.NomeGrupo = rd["NomeGrupo "].ToString();
                         grupousuarios.Add(grupousuario);
                     }
                 }

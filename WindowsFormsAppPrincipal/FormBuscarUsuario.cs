@@ -19,10 +19,13 @@ namespace WindowsFormsAppPrincipal
         public FormBuscarUsuario()
         {
             InitializeComponent();
+            
         }
 
         private void buttonBuscar_Click(object sender, EventArgs e)
+
         {
+            
             usuarioBindingSource.DataSource = new UsuarioBLL().BuscarTodos();
         }
 

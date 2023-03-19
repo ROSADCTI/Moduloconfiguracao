@@ -122,7 +122,7 @@ namespace DAL
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.Email = rd["Email"].ToString();
-                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Cpf = rd["CPF"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
 
