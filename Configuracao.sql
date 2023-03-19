@@ -73,3 +73,4 @@ ADD CONSTRAINT FK_PermissaoGrupoUsuario_GrupoUsuario
 FOREIGN KEY (IdGrupoUsuario) REFERENCES GrupoUsuario(Id)
 
 GO
+Select * from Usuario;
