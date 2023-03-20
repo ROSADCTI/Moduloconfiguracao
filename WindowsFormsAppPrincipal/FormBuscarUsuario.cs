@@ -48,5 +48,22 @@ namespace WindowsFormsAppPrincipal
         {
 
         }
+
+       
+
+        private void buttonAlterar_Click(object sender, EventArgs e)
+        {
+            int id =  ((Usuario)usuarioBindingSource.Current).Id;
+            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario(11));
+        }
+
+        private void buttonAdicionar_Click(object sender, EventArgs e)
+        {
+            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario())
+            {
+                frm.ShowDialog();
+            }
+            buttonBuscar_Click(null, null);
+        }
     }
 }

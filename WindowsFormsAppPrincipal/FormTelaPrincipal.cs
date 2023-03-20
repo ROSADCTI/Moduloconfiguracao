@@ -17,13 +17,13 @@ namespace WindowsFormsAppPrincipal
         public FormTelaprincipal()
         {
             InitializeComponent();
-            Usuario usuario = new Usuario();
-            usuario.NomeUsuario = "Rosilene";
-            usuario.Nome = "Rosa";
-            usuario.Email = "Clementerosa@gmail.com";
-            usuario.CPF = "456.556.015.91";
-            usuario.Senha = "R12356c";
-            usuario.Ativo = true;
+            //Usuario usuario = new Usuario();
+            //usuario.NomeUsuario = "Rosilene";
+            //usuario.Nome = "Rosa";
+            //usuario.Email = "Clementerosa@gmail.com";
+            //usuario.CPF = "456.556.015.91";
+            //usuario.Senha = "R12356c";
+            //usuario.Ativo = true;
 
             
             //usuario.NomeUsuario = "WilllianAraujo";
@@ -41,7 +41,7 @@ namespace WindowsFormsAppPrincipal
             //usuario.Senha = "569201";
             //usuario.Ativo = true;
 
-            new UsuarioBLL(). Inserir(usuario);
+            //new UsuarioBLL(). Inserir(usuario);
         }
 
         private void FormTelaprincipal_Load(object sender, EventArgs e)
