@@ -44,17 +44,16 @@ namespace WindowsFormsAppPrincipal
             MessageBox.Show("Registro excluído com sucesso!");
         }
 
-        private void FormBuscarUsuario_Load(object sender, EventArgs e)
-        {
-
-        }
-
        
 
         private void buttonAlterar_Click(object sender, EventArgs e)
         {
             int id =  ((Usuario)usuarioBindingSource.Current).Id;
-            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario(11));
+            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario(id))
+            {
+              frm.ShowDialog();
+            }
+             buttonBuscar_Click(null, null);
         }
 
         private void buttonAdicionar_Click(object sender, EventArgs e)

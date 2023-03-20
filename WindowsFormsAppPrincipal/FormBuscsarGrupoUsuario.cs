@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
 {
-    public partial class Form1: Form
+    public partial class FormBuscsarGrupoUsuario : Form
     {
-        public Form1()
+        public FormBuscsarGrupoUsuario()
         {
             InitializeComponent();
         }
