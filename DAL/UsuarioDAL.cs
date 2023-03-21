@@ -48,14 +48,15 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "update Usuario set Nome = @nome,NomeUsuario = @NomeUsario,Email = @Email,CPF =@Cpf,Senha = @Senha,Ativo = @Ativa WHERE id = @ID";
+                cmd.CommandText = @"update Usuario set Nome = @Nome,NomeUsuario = @NomeUsuario,Email = @Email,
+                                CPF =@Cpf,Senha = @Senha,Ativo = @Ativo WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 
                 cmd.Parameters.AddWithValue("@Id", _usuario.Id);
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
-                cmd.Parameters.AddWithValue("@CPF", _usuario.CPF);
+                cmd.Parameters.AddWithValue("@Cpf", _usuario.CPF);
                 cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
                 cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
                 cmd.Connection = cn;
@@ -286,7 +287,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo,Senha FROM Usuario ";
+                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo,Senha FROM Usuario WHERE Id=@Id";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("Id", _id);

@@ -48,12 +48,23 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonAlterar_Click(object sender, EventArgs e)
         {
-            int id =  ((Usuario)usuarioBindingSource.Current).Id;
-            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario(id))
+            if (usuarioBindingSource.Count <= 0)
             {
-              frm.ShowDialog();
+                MessageBox.Show("Não há registro selecionar para ser alterado.");
+                return;
             }
-             buttonBuscar_Click(null, null);
+            else
+            {
+                int id = ((Usuario)usuarioBindingSource.Current).Id;
+
+                using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario(id))
+                {
+                    frm.ShowDialog();
+                }
+                buttonBuscar_Click(null, null);
+
+            }
+
         }
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
