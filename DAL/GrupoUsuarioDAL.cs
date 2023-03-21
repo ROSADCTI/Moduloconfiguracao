@@ -107,7 +107,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id, NomeGrupo";
+                cmd.CommandText = "SELECT Id, NomeGrupo FROM GrupoUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -118,9 +118,6 @@ namespace DAL
                         grupousuario = new GrupoUsuario();
                         grupousuario.IdGrupo = Convert.ToInt32(rd["Id"]);
                         grupousuario.NomeGrupo = rd["NomeGrupo "].ToString();
-
-
-
                         grupousuarios.Add(grupousuario);
                     }
                 }
@@ -147,7 +144,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,Nomegrupo";
+                cmd.CommandText = "SELECT Id,Nomegrupo FROM GrupoUsuario WHERE Nomegrupo = @Nomegrupo";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nomegrupo", "%" + _nomegrupo + "%");
                 cn.Open();
@@ -185,9 +182,9 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,NomeGrupo";
+                cmd.CommandText = "SELECT Id,NomeGrupo FROM GrupoUsuario WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("Id", _id);
+                cmd.Parameters.AddWithValue("@Id", _id);
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
 

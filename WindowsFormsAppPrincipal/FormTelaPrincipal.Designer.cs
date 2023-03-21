@@ -78,6 +78,7 @@
             this.grupoDeUsuárioToolStripMenuItem.Name = "grupoDeUsuárioToolStripMenuItem";
             this.grupoDeUsuárioToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.grupoDeUsuárioToolStripMenuItem.Text = "Grupo de Usuário";
+            this.grupoDeUsuárioToolStripMenuItem.Click += new System.EventHandler(this.grupoDeUsuárioToolStripMenuItem_Click);
             // 
             // FormTelaprincipal
             // 

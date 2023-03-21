@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
@@ -31,7 +33,7 @@ namespace DAL
 
 
             }
-             catch (Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ocorreu um erro ao tentar inserir um usuário no banco de dados: ", ex);
             }
@@ -51,7 +53,7 @@ namespace DAL
                 cmd.CommandText = @"update Usuario set Nome = @Nome,NomeUsuario = @NomeUsuario,Email = @Email,
                                 CPF =@Cpf,Senha = @Senha,Ativo = @Ativo WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
-                
+
                 cmd.Parameters.AddWithValue("@Id", _usuario.Id);
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
@@ -75,7 +77,7 @@ namespace DAL
             }
         }
         public void Excluir(int _id)
-        
+
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             try
@@ -209,7 +211,7 @@ namespace DAL
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.Email = rd["Email"].ToString();
-                        usuario.CPF= rd["Cpf"].ToString();
+                        usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
 
@@ -242,7 +244,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo FROM Usuario WHERE NomeUsuario LIKE = @nomeusuario" ;
+                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo FROM Usuario WHERE NomeUsuario LIKE = @nomeusuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@nomeusuario", "%" + _nomeUsuario + "%");
                 cn.Open();
@@ -281,7 +283,7 @@ namespace DAL
             List<Usuario> usuarios = new List<Usuario>();
             Usuario usuario = new Usuario();
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-            
+
 
             try
             {
@@ -320,6 +322,39 @@ namespace DAL
             {
                 cn.Close();
             }
+        }
+        public bool ValidarPermissao(int _idUsuario, int _idPermissao)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT 1 FROM PermissaoGrupoUsuario
+                                          INNER JOIN UsuarioGrupoUsuario ON PermissaoGrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.IdGrupoUsuario
+                                          WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario AND PermissaoGrupoUsuario.IdPermissao = @IdPermissao";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
+                cmd.Parameters.AddWithValue("@IdPermissao", _idPermissao);
+                cn.Open();
+
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                        return true;
+                }
+                return false;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar validar permissao");
+            }
+            finally
+            {
+                cn.Close();
+            }
+
         }
     }
 }

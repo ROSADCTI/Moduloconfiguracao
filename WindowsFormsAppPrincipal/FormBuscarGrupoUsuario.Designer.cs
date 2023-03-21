@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsAppPrincipal
 {
-    partial class FormBuscsarGrupoUsuario
+    partial class FormBuscarGrupoUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,8 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.permitirBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.permitirDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.buttonAlterar = new System.Windows.Forms.Button();
@@ -42,8 +44,6 @@
             this.buttonAdicionar = new System.Windows.Forms.Button();
             this.buttonExcluirPermissao = new System.Windows.Forms.Button();
             this.buttonAdicionarPermissao = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.permitirBindingSource)).BeginInit();
@@ -65,13 +65,13 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
             this.grupoUsuarioDataGridView.DataSource = this.grupoUsuarioBindingSource;
-            this.grupoUsuarioDataGridView.Location = new System.Drawing.Point(-14, 104);
-            this.grupoUsuarioDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grupoUsuarioDataGridView.Location = new System.Drawing.Point(-19, 128);
+            this.grupoUsuarioDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grupoUsuarioDataGridView.Name = "grupoUsuarioDataGridView";
             this.grupoUsuarioDataGridView.ReadOnly = true;
             this.grupoUsuarioDataGridView.RowHeadersWidth = 51;
             this.grupoUsuarioDataGridView.RowTemplate.Height = 24;
-            this.grupoUsuarioDataGridView.Size = new System.Drawing.Size(500, 185);
+            this.grupoUsuarioDataGridView.Size = new System.Drawing.Size(667, 228);
             this.grupoUsuarioDataGridView.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
@@ -81,6 +81,7 @@
             this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -107,84 +108,14 @@
             this.dataGridViewTextBoxColumn3,
             this.descricao});
             this.permitirDataGridView.DataSource = this.permitirBindingSource;
-            this.permitirDataGridView.Location = new System.Drawing.Point(485, 104);
-            this.permitirDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.permitirDataGridView.Location = new System.Drawing.Point(647, 128);
+            this.permitirDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.permitirDataGridView.Name = "permitirDataGridView";
             this.permitirDataGridView.ReadOnly = true;
             this.permitirDataGridView.RowHeadersWidth = 51;
             this.permitirDataGridView.RowTemplate.Height = 24;
-            this.permitirDataGridView.Size = new System.Drawing.Size(299, 185);
+            this.permitirDataGridView.Size = new System.Drawing.Size(399, 228);
             this.permitirDataGridView.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(9, 72);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
-            this.textBox1.TabIndex = 3;
-            // 
-            // buttonBuscar
-            // 
-            this.buttonBuscar.Location = new System.Drawing.Point(164, 65);
-            this.buttonBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonBuscar.Name = "buttonBuscar";
-            this.buttonBuscar.Size = new System.Drawing.Size(74, 26);
-            this.buttonBuscar.TabIndex = 4;
-            this.buttonBuscar.Text = "Buscar";
-            this.buttonBuscar.UseVisualStyleBackColor = true;
-            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
-            // 
-            // buttonAlterar
-            // 
-            this.buttonAlterar.Location = new System.Drawing.Point(242, 65);
-            this.buttonAlterar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonAlterar.Name = "buttonAlterar";
-            this.buttonAlterar.Size = new System.Drawing.Size(56, 26);
-            this.buttonAlterar.TabIndex = 4;
-            this.buttonAlterar.Text = "Alterar";
-            this.buttonAlterar.UseVisualStyleBackColor = true;
-            this.buttonAlterar.Click += new System.EventHandler(this.buttonAlterar_Click);
-            // 
-            // buttonExcluir
-            // 
-            this.buttonExcluir.Location = new System.Drawing.Point(302, 65);
-            this.buttonExcluir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonExcluir.Name = "buttonExcluir";
-            this.buttonExcluir.Size = new System.Drawing.Size(78, 26);
-            this.buttonExcluir.TabIndex = 4;
-            this.buttonExcluir.Text = "Excluir";
-            this.buttonExcluir.UseVisualStyleBackColor = true;
-            // 
-            // buttonAdicionar
-            // 
-            this.buttonAdicionar.Location = new System.Drawing.Point(385, 65);
-            this.buttonAdicionar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonAdicionar.Name = "buttonAdicionar";
-            this.buttonAdicionar.Size = new System.Drawing.Size(62, 25);
-            this.buttonAdicionar.TabIndex = 4;
-            this.buttonAdicionar.Text = "Adicionar";
-            this.buttonAdicionar.UseVisualStyleBackColor = true;
-            // 
-            // buttonExcluirPermissao
-            // 
-            this.buttonExcluirPermissao.Location = new System.Drawing.Point(581, 72);
-            this.buttonExcluirPermissao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonExcluirPermissao.Name = "buttonExcluirPermissao";
-            this.buttonExcluirPermissao.Size = new System.Drawing.Size(97, 28);
-            this.buttonExcluirPermissao.TabIndex = 4;
-            this.buttonExcluirPermissao.Text = "Excluir";
-            this.buttonExcluirPermissao.UseVisualStyleBackColor = true;
-            // 
-            // buttonAdicionarPermissao
-            // 
-            this.buttonAdicionarPermissao.Location = new System.Drawing.Point(704, 72);
-            this.buttonAdicionarPermissao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonAdicionarPermissao.Name = "buttonAdicionarPermissao";
-            this.buttonAdicionarPermissao.Size = new System.Drawing.Size(73, 28);
-            this.buttonAdicionarPermissao.TabIndex = 4;
-            this.buttonAdicionarPermissao.Text = "Adicionar";
-            this.buttonAdicionarPermissao.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -202,12 +133,85 @@
             this.descricao.MinimumWidth = 10;
             this.descricao.Name = "descricao";
             this.descricao.ReadOnly = true;
+            this.descricao.Width = 125;
             // 
-            // FormBuscsarGrupoUsuario
+            // textBox1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.textBox1.Location = new System.Drawing.Point(12, 89);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 22);
+            this.textBox1.TabIndex = 3;
+            // 
+            // buttonBuscar
+            // 
+            this.buttonBuscar.Location = new System.Drawing.Point(219, 80);
+            this.buttonBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonBuscar.Name = "buttonBuscar";
+            this.buttonBuscar.Size = new System.Drawing.Size(99, 32);
+            this.buttonBuscar.TabIndex = 4;
+            this.buttonBuscar.Text = "Buscar";
+            this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
+            // 
+            // buttonAlterar
+            // 
+            this.buttonAlterar.Location = new System.Drawing.Point(323, 80);
+            this.buttonAlterar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAlterar.Name = "buttonAlterar";
+            this.buttonAlterar.Size = new System.Drawing.Size(75, 32);
+            this.buttonAlterar.TabIndex = 4;
+            this.buttonAlterar.Text = "Alterar";
+            this.buttonAlterar.UseVisualStyleBackColor = true;
+            this.buttonAlterar.Click += new System.EventHandler(this.buttonAlterar_Click);
+            // 
+            // buttonExcluir
+            // 
+            this.buttonExcluir.Location = new System.Drawing.Point(403, 80);
+            this.buttonExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonExcluir.Name = "buttonExcluir";
+            this.buttonExcluir.Size = new System.Drawing.Size(104, 32);
+            this.buttonExcluir.TabIndex = 4;
+            this.buttonExcluir.Text = "Excluir";
+            this.buttonExcluir.UseVisualStyleBackColor = true;
+            this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
+            // 
+            // buttonAdicionar
+            // 
+            this.buttonAdicionar.Location = new System.Drawing.Point(513, 80);
+            this.buttonAdicionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAdicionar.Name = "buttonAdicionar";
+            this.buttonAdicionar.Size = new System.Drawing.Size(83, 31);
+            this.buttonAdicionar.TabIndex = 4;
+            this.buttonAdicionar.Text = "Adicionar";
+            this.buttonAdicionar.UseVisualStyleBackColor = true;
+            this.buttonAdicionar.Click += new System.EventHandler(this.buttonAdicionar_Click);
+            // 
+            // buttonExcluirPermissao
+            // 
+            this.buttonExcluirPermissao.Location = new System.Drawing.Point(775, 89);
+            this.buttonExcluirPermissao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonExcluirPermissao.Name = "buttonExcluirPermissao";
+            this.buttonExcluirPermissao.Size = new System.Drawing.Size(129, 34);
+            this.buttonExcluirPermissao.TabIndex = 4;
+            this.buttonExcluirPermissao.Text = "Excluir";
+            this.buttonExcluirPermissao.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdicionarPermissao
+            // 
+            this.buttonAdicionarPermissao.Location = new System.Drawing.Point(939, 89);
+            this.buttonAdicionarPermissao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAdicionarPermissao.Name = "buttonAdicionarPermissao";
+            this.buttonAdicionarPermissao.Size = new System.Drawing.Size(97, 34);
+            this.buttonAdicionarPermissao.TabIndex = 4;
+            this.buttonAdicionarPermissao.Text = "Adicionar";
+            this.buttonAdicionarPermissao.UseVisualStyleBackColor = true;
+            // 
+            // FormBuscarGrupoUsuario
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 366);
+            this.ClientSize = new System.Drawing.Size(1071, 450);
             this.Controls.Add(this.buttonAdicionarPermissao);
             this.Controls.Add(this.buttonExcluirPermissao);
             this.Controls.Add(this.buttonAdicionar);
@@ -217,8 +221,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.permitirDataGridView);
             this.Controls.Add(this.grupoUsuarioDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "FormBuscsarGrupoUsuario";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "FormBuscarGrupoUsuario";
             this.Text = "Buscar Grupo  Usuario";
             this.Load += new System.EventHandler(this.FormBuscsarGrupoUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioBindingSource)).EndInit();
