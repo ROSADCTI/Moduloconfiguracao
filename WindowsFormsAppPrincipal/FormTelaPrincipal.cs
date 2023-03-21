@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using Models;
 
 namespace WindowsFormsAppPrincipal
 {
@@ -46,7 +47,7 @@ namespace WindowsFormsAppPrincipal
 
         private void FormTelaprincipal_Load(object sender, EventArgs e)
         {
-
+            Contantes.IdUsuarioLogado = 13;
         }
 
         private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
