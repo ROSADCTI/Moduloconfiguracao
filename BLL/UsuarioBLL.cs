@@ -81,10 +81,13 @@ namespace BLL
 
         }
 
-
-
-
-
+        public void AdicionarGrupoUsuario(object idUsuario, object id)
+        {
+            {
+                if (!new UsuarioDAL().UsuarioPertenceAoGrupo(_idUsuario, IdGrupoUsuario))
+                    new UsuarioDAL().AdicionaGrupoUsuario(_idUsuario, _idGrupoUsuario);
+            }
+        }
     }
 
 

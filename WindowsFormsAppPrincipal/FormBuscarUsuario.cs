@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,8 @@ namespace WindowsFormsAppPrincipal
 {
     public partial class FormBuscarUsuario : Form
     {
+        public object IdUsuario { get; private set; }
+
         public FormBuscarUsuario()
 
         {
@@ -81,5 +84,27 @@ namespace WindowsFormsAppPrincipal
                 }
                 buttonBuscar_Click(null, null);
             }
+
+        private void buttonAdicionagrupousuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (FormConsultaGrupoUsuario frm = new FormConsultaGrupoUsuario())
+                {
+                    frm.ShowDialog();
+                    if (frm.Id != 0)
+                    {
+                        int idUsuario = ((Usuario)usuarioBindingSource.Current).Id;
+                        new UsuarioBLL().AdicionarGrupoUsuario(IdUsuario, frm.Id);
+                    }
+
+                    catch (Exception ex)
+
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
     }
 }

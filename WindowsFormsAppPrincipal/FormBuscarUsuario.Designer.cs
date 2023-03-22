@@ -40,6 +40,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gPusuariosDataGridView = new System.Windows.Forms.DataGridView();
+            this.idGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gPusuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.buttonAlterar = new System.Windows.Forms.Button();
@@ -47,9 +50,6 @@
             this.buttonAdicionagrupousuario = new System.Windows.Forms.Button();
             this.buttonExcluirgrupousuario = new System.Windows.Forms.Button();
             this.buttonAdicionar = new System.Windows.Forms.Button();
-            this.gPusuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioDataGridView)).BeginInit();
@@ -157,6 +157,29 @@
             this.gPusuariosDataGridView.Size = new System.Drawing.Size(297, 310);
             this.gPusuariosDataGridView.TabIndex = 2;
             // 
+            // idGrupoDataGridViewTextBoxColumn
+            // 
+            this.idGrupoDataGridViewTextBoxColumn.DataPropertyName = "IdGrupo";
+            this.idGrupoDataGridViewTextBoxColumn.HeaderText = "IdGrupo";
+            this.idGrupoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idGrupoDataGridViewTextBoxColumn.Name = "idGrupoDataGridViewTextBoxColumn";
+            this.idGrupoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idGrupoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nomeGrupoDataGridViewTextBoxColumn
+            // 
+            this.nomeGrupoDataGridViewTextBoxColumn.DataPropertyName = "NomeGrupo";
+            this.nomeGrupoDataGridViewTextBoxColumn.HeaderText = "NomeGrupo";
+            this.nomeGrupoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomeGrupoDataGridViewTextBoxColumn.Name = "nomeGrupoDataGridViewTextBoxColumn";
+            this.nomeGrupoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomeGrupoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // gPusuariosBindingSource
+            // 
+            this.gPusuariosBindingSource.DataMember = "GPusuarios";
+            this.gPusuariosBindingSource.DataSource = this.usuarioBindingSource;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 47);
@@ -206,6 +229,7 @@
             this.buttonAdicionagrupousuario.TabIndex = 4;
             this.buttonAdicionagrupousuario.Text = "Adicionar";
             this.buttonAdicionagrupousuario.UseVisualStyleBackColor = true;
+            this.buttonAdicionagrupousuario.Click += new System.EventHandler(this.buttonAdicionagrupousuario_Click);
             // 
             // buttonExcluirgrupousuario
             // 
@@ -227,29 +251,6 @@
             this.buttonAdicionar.Text = "Adicionar";
             this.buttonAdicionar.UseVisualStyleBackColor = true;
             this.buttonAdicionar.Click += new System.EventHandler(this.buttonAdicionar_Click);
-            // 
-            // gPusuariosBindingSource
-            // 
-            this.gPusuariosBindingSource.DataMember = "GPusuarios";
-            this.gPusuariosBindingSource.DataSource = this.usuarioBindingSource;
-            // 
-            // idGrupoDataGridViewTextBoxColumn
-            // 
-            this.idGrupoDataGridViewTextBoxColumn.DataPropertyName = "IdGrupo";
-            this.idGrupoDataGridViewTextBoxColumn.HeaderText = "IdGrupo";
-            this.idGrupoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idGrupoDataGridViewTextBoxColumn.Name = "idGrupoDataGridViewTextBoxColumn";
-            this.idGrupoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idGrupoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nomeGrupoDataGridViewTextBoxColumn
-            // 
-            this.nomeGrupoDataGridViewTextBoxColumn.DataPropertyName = "NomeGrupo";
-            this.nomeGrupoDataGridViewTextBoxColumn.HeaderText = "NomeGrupo";
-            this.nomeGrupoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nomeGrupoDataGridViewTextBoxColumn.Name = "nomeGrupoDataGridViewTextBoxColumn";
-            this.nomeGrupoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomeGrupoDataGridViewTextBoxColumn.Width = 125;
             // 
             // FormBuscarUsuario
             // 

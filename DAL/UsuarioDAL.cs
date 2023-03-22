@@ -46,7 +46,7 @@ namespace DAL
         public void Alterar(Usuario _usuario)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-           
+
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
@@ -332,11 +332,11 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT 1 FROM PermissaoGrupoUsuario
-                                          INNER JOIN UsuarioGrupoUsuario ON PermissaoGrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.IdGrupoUsuario
-                                          WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario AND PermissaoGrupoUsuario.IdPermissao = @IdPermissao";
-                cmd.CommandType = System.Data.CommandType.Text;
+                                    WHERE IdUsuario = IdUsuario AND IdGrupoUsuario = @IdGrupoUsuario;      
+                 cmd.CommandType = System.Data.CommandType.Text";
+
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idGrupoUsuario);
                 cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
-                cmd.Parameters.AddWithValue("@IdPermissao", _idPermissao);
                 cn.Open();
 
                 using (SqlDataReader rd = cmd.ExecuteReader())
@@ -349,7 +349,64 @@ namespace DAL
 
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar validar permissao");
+                throw new Exception("Ocorreu um erro ao tentar existência de grupo vinculado ao usuário no banco de dados");
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        public bool UsuarioPertenceAoGrupo(int _idUsuario, int _IdGrupoUsuario)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"SELECT 1 FROM UsuarioGrupoUsuario 
+                                WHERE IdUsuario = @idUsuario AND IdGrupoUsuario = @idGrupoUsuario";
+                cmd.Parameters.AddWithValue("@idGrupoUsuario", _IdGrupoUsuario);
+                cmd.Parameters.AddWithValue("@idUsuario", _idUsuario);
+                
+                cmd.Connection = cn;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar existencia de grupo vinculado ao usuario no banco de dados: ", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+
+        public void AdicionaGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"INSERT INTO UsuarioGrupoUsuario,IdGrupoUsuario)
+                                    VALUES(@IdUsuario, @IdGrupoUsuario)";
+
+
+                cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
+                cmd.Parameters.AddWithValue("@IdUsuario", _idGrupoUsuario);
+                cmd.Connection = cn;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar vincular um grupo a um usuário no banco de dados.");
             }
             finally
             {
@@ -357,5 +414,7 @@ namespace DAL
             }
 
         }
-    }
+     }
+        
+     
 }
