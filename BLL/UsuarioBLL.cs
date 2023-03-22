@@ -53,7 +53,7 @@ namespace BLL
         }
         public List<Usuario> BuscarPorNome(string _nome)
         {
-            ValidarPermissao(1);
+            ValidarPermissao(1);        
             return new UsuarioDAL().BuscarPorNome(_nome);
         }
         public List<Usuario> BuscarPorNomeUsuario(string _nomeUsuario)
