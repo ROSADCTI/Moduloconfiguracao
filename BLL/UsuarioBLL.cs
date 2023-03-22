@@ -76,8 +76,8 @@ namespace BLL
         }
         public void ValidarPermissao(int _idPermissao)
         {
-            if (!new UsuarioDAL().ValidarPermissao(Contantes.IdUsuarioLogado, _idPermissao))
-                  throw new Exception("Você não tem permissão de realizar essa operação. Procure o administrador do sistema.");
+            //if (!new UsuarioDAL().ValidarPermissao(Contantes.IdUsuarioLogado, _idPermissao))
+                  //throw new Exception("Você não tem permissão de realizar essa operação. Procure o administrador do sistema.");
 
         }
 

@@ -24,7 +24,7 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
-               usuarioBindingSource.DataSource = new UsuarioBLL().BuscarTodos();
+              usuarioBindingSource.DataSource = new UsuarioBLL().BuscarTodos();
 
             } 
              catch (Exception ex)
@@ -72,14 +72,14 @@ namespace WindowsFormsAppPrincipal
             }
 
         }
-
-        private void buttonAdicionar_Click(object sender, EventArgs e)
-        {
-            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario())
+                            
+            private void buttonAdicionar_Click(object sender, EventArgs e)
             {
-                frm.ShowDialog();
+                using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario())
+                {
+                    frm.ShowDialog();
+                }
+                buttonBuscar_Click(null, null);
             }
-            buttonBuscar_Click(null, null);
-        }
     }
 }

@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
-namespace DAL
-{
+ namespace DAL
+ {
     public class GrupoUsuarioDAL
     {
         public void inserir(GrupoUsuario _grupousuario)
@@ -64,7 +64,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("O correu um erro na tentativa buscar gupo usuario por Id do usuário no banco de dados", ex);
             }
             finally
             {
@@ -205,6 +205,44 @@ namespace DAL
             catch (Exception ex)
             {
                 throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+        public List<GrupoUsuario> BuscarPorIdUsuario(int _idUsuario)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            List<GrupoUsuario> grupousuarios = new List<GrupoUsuario>();
+            GrupoUsuario grupousuario;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT GrupoUsuario.Id, GrupoUsuario.NomeGrupo FROM GrupoUsuario
+                    INNER JOIN UsuarioGrupoUsuario ON GrupoUsuario.Id = UsuarioGrupoUsuario.IdGrupoUsuario
+                    WHERE UsuarioGrupoUsuario.IdUsuario = @Idusuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Idusuario",_idUsuario);
+
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        grupousuario = new GrupoUsuario();
+                        grupousuario.IdGrupo = Convert.ToInt32(rd["Id"]);
+                        grupousuario.NomeGrupo = rd["NomeGrupo"].ToString();
+                        grupousuarios.Add(grupousuario);
+                        
+                    }
+                }
+                return grupousuarios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar buscar grupos de usuário Id do usuário do banco de dado. ");
             }
             finally
             {

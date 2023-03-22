@@ -46,7 +46,7 @@ namespace DAL
         public void Alterar(Usuario _usuario)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-
+           
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
@@ -128,6 +128,7 @@ namespace DAL
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
+                        usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
                         usuarios.Add(usuario);
                     }
                 }
@@ -168,7 +169,7 @@ namespace DAL
                         usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
-
+                        usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
                         usuarios.Add(usuario);
 
                     }
@@ -214,7 +215,7 @@ namespace DAL
                         usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
-
+                        usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
                         usuarios.Add(usuario);
 
                     }
@@ -260,7 +261,7 @@ namespace DAL
                         usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
-
+                        usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
                         usuarios.Add(usuario);
 
                     }
@@ -306,7 +307,7 @@ namespace DAL
                         usuario.CPF = rd["Cpf"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
-
+                        usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
                         usuarios.Add(usuario);
 
                     }
