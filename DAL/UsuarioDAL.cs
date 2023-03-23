@@ -414,6 +414,29 @@ namespace DAL
 
         }
      }
-        
-     
-}
+    public void RemoverGrupoUsuario(Usuario _usuario)
+    {
+        SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+
+        try
+        {
+            SqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = @"DELETE FROM  UsuarioGrupoUsuario Where IdUsuario = @IdUsuario AND IdGrupoUsuario";
+            
+            cn.Open();
+            cmd.ExecuteNonQuery();
+
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Ocorreu um erro ao tentar inserir um usuário no banco de dados: ", ex);
+        }
+        finally
+        {
+            cn.Close();
+        }
+
+
+
+    }

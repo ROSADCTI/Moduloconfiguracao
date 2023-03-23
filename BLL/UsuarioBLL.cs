@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
@@ -91,7 +92,10 @@ namespace BLL
                 if (!new UsuarioDAL().UsuarioPertenceAoGrupo(_idUsuario, IdGrupoUsuario))
                     new UsuarioDAL().AdicionaGrupoUsuario(_idUsuario, IdGrupoUsuario);
             }
-        }
+           Public void RemoverGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
+            {
+                new UsuarioDAL().RemoverGrupoUsuario(_idUsuario, IdGrupoUsuario);
+            }
     }
 
 

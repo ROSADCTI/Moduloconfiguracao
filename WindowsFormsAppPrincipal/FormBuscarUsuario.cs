@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using BLL;
 using Models;
@@ -94,6 +95,22 @@ namespace WindowsFormsAppPrincipal
                 MessageBox.Show(ex.Message + ": " + ex.InnerException.Message);
             }
         }
+
+        private void buttonExcluirgrupousuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = ((GrupoUsuario)gPusuariosBingindSource.Current).IdGrupo;
+                int idUsuario = ((Usuario)UsuarioBindingSource.Current).Id;
+                new UsuarioBLL().RemoverGrupo
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }
     

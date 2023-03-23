@@ -240,6 +240,7 @@
             this.buttonExcluirgrupousuario.TabIndex = 4;
             this.buttonExcluirgrupousuario.Text = "Excluir";
             this.buttonExcluirgrupousuario.UseVisualStyleBackColor = true;
+            this.buttonExcluirgrupousuario.Click += new System.EventHandler(this.buttonExcluirgrupousuario_Click);
             // 
             // buttonAdicionar
             // 
