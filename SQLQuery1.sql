@@ -51,6 +51,7 @@ SELECT * FROM UsuarioGrupoUsuario
 
   DECLARE @IdUsuario INT = 1
   DECLARE @IdPermissao INT = 10
+  DECLARE
 
 
  SELECT 1 FROM PermissaoGrupoUsuario

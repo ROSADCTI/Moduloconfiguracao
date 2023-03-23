@@ -166,7 +166,7 @@ using System.Windows.Markup;
 
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro ao tentar grupo  grupo de usuário por nome no grupo no banco de dados . Por favor verifique sua conexão", ex);
+                throw new Exception("O correu um erro ao tentar buscar grupo de usuário por nome no grupo no banco de dados . Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -207,7 +207,7 @@ using System.Windows.Markup;
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro ao tentar buscar grupo usuario por Id no banco de dados. verifique sua conexão", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar grupo usuario por Id no banco de dados. verifique sua conexão", ex);
             }
             finally
             {

@@ -68,10 +68,10 @@
             // buttonSelecionar
             // 
             this.buttonSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSelecionar.Location = new System.Drawing.Point(358, 128);
+            this.buttonSelecionar.Location = new System.Drawing.Point(367, 128);
             this.buttonSelecionar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSelecionar.Name = "buttonSelecionar";
-            this.buttonSelecionar.Size = new System.Drawing.Size(89, 28);
+            this.buttonSelecionar.Size = new System.Drawing.Size(110, 28);
             this.buttonSelecionar.TabIndex = 1;
             this.buttonSelecionar.Text = "Selecionar";
             this.buttonSelecionar.UseVisualStyleBackColor = true;
@@ -83,7 +83,7 @@
             this.buttonBuscar.Location = new System.Drawing.Point(284, 127);
             this.buttonBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBuscar.Name = "buttonBuscar";
-            this.buttonBuscar.Size = new System.Drawing.Size(66, 28);
+            this.buttonBuscar.Size = new System.Drawing.Size(83, 28);
             this.buttonBuscar.TabIndex = 1;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
@@ -92,10 +92,10 @@
             // buttonCancelar
             // 
             this.buttonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancelar.Location = new System.Drawing.Point(455, 128);
+            this.buttonCancelar.Location = new System.Drawing.Point(485, 128);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(73, 27);
+            this.buttonCancelar.Size = new System.Drawing.Size(105, 27);
             this.buttonCancelar.TabIndex = 1;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             this.gPusuariosDataGridView.ReadOnly = true;
             this.gPusuariosDataGridView.RowHeadersWidth = 51;
             this.gPusuariosDataGridView.RowTemplate.Height = 24;
-            this.gPusuariosDataGridView.Size = new System.Drawing.Size(496, 143);
+            this.gPusuariosDataGridView.Size = new System.Drawing.Size(587, 143);
             this.gPusuariosDataGridView.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn2
