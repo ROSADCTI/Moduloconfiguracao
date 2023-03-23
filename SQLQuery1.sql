@@ -46,10 +46,10 @@ INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(6,1)
 SELECT * FROM Usuario
 SELECT * FROM UsuarioGrupoUsuario
 
---DECLARE @IdUsuario INT = 1
---DECLARE @IdPermissao INT = 10
---
+  DECLARE @IdUsuario INT = 1
+  DECLARE @IdPermissao INT = 10
 
- --SELECT 1 FROM PermissaoGrupoUsuario
- --INNER JOIN UsuarioGrupoUsuario ON PermissaoGrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.IdGrupoUsuario
- --WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario AND PermissaoGrupoUsuario.IdPermissao = @IdPermissao
+
+ SELECT 1 FROM PermissaoGrupoUsuario
+INNER JOIN UsuarioGrupoUsuario ON PermissaoGrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.IdGrupoUsuario
+ WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario AND PermissaoGrupoUsuario.IdPermissao = @IdPermissao
