@@ -32,7 +32,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir uma descrissao. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu erro ao tentar inserir um grupo de usuário no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -64,7 +64,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("O correu um erro ao tentarde alterar um grupo de usuário no banco de dados.", ex);        
             }
             finally
             {
@@ -125,7 +125,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentetiva de buscar dos dados. Por favor verifique sua conexao", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os grupos de usuários no banco de dados. Por favor verifique sua conexao", ex);
             }
             finally
             {
@@ -148,7 +148,9 @@ namespace DAL
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nomegrupo", "%" + _nomegrupo + "%");
                 cn.Open();
+                
                 using (SqlDataReader rd = cmd.ExecuteReader())
+                
                 {
                     while (rd.Read())
                     {
@@ -163,7 +165,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("O correu um erro ao tentar grupo  grupo de usuário por nome no grupo no banco de dados . Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -204,7 +206,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("O correu um erro ao tentar buscar grupo usuario por Id no banco de dados. verifique sua conexão", ex);
             }
             finally
             {

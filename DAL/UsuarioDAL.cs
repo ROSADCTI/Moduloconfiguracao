@@ -135,7 +135,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro na tentetiva jde buscar dos dados. Por favor verifique sua conexao", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuários no banco de dados. Por favor verifique sua conexao", ex);
             }
             finally
             {
