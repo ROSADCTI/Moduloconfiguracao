@@ -43,7 +43,7 @@
             this.cPFTextBox = new System.Windows.Forms.TextBox();
             this.senhaTextBox = new System.Windows.Forms.TextBox();
             this.ativoCheckBox = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxConfirmacao = new System.Windows.Forms.TextBox();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancelar = new System.Windows.Forms.Button();
@@ -173,12 +173,13 @@
             this.ativoCheckBox.TabIndex = 12;
             this.ativoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxConfirmacao
             // 
-            this.textBox1.Location = new System.Drawing.Point(411, 200);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(119, 22);
-            this.textBox1.TabIndex = 13;
+            this.textBoxConfirmacao.Location = new System.Drawing.Point(411, 200);
+            this.textBoxConfirmacao.Name = "textBoxConfirmacao";
+            this.textBoxConfirmacao.Size = new System.Drawing.Size(119, 22);
+            this.textBoxConfirmacao.TabIndex = 13;
+            this.textBoxConfirmacao.TextChanged += new System.EventHandler(this.textBoxConfirmacao_TextChanged);
             // 
             // buttonSalvar
             // 
@@ -211,7 +212,7 @@
             this.buttonCancelar.UseVisualStyleBackColor = true;
             this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
-            // FomCadastrodeUsuario
+            // FormCadastrodeUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,7 +221,7 @@
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxConfirmacao);
             this.Controls.Add(ativoLabel);
             this.Controls.Add(this.ativoCheckBox);
             this.Controls.Add(senhaLabel);
@@ -235,7 +236,7 @@
             this.Controls.Add(this.nomeTextBox);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FomCadastrodeUsuario";
+            this.Name = "FormCadastrodeUsuario";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -256,7 +257,7 @@
         private System.Windows.Forms.TextBox cPFTextBox;
         private System.Windows.Forms.TextBox senhaTextBox;
         private System.Windows.Forms.CheckBox ativoCheckBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxConfirmacao;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonCancelar;

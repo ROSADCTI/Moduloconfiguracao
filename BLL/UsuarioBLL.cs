@@ -11,21 +11,21 @@ namespace BLL
 {
     public class UsuarioBLL
     {
-        public void Inserir(Usuario _usuario)
+        public void Inserir(Usuario _usuario, string _confirmacao)
         {
             ValidarPermissao(2);
-            ValidarDados(_usuario);
+            ValidarDados(_usuario, _confirmacao);
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
         }
 
 
-        public void Alterar(Usuario _usuario)
+        public void Alterar(Usuario _usuario,  string _confirmacao)
 
         {
             ValidarPermissao(3);
-            ValidarDados(_usuario);
+            ValidarDados(_usuario, _confirmacao);
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Alterar(_usuario);
@@ -62,9 +62,13 @@ namespace BLL
             ValidarPermissao(1);
             return new UsuarioDAL().BuscarPorNomeUsuario(_nomeUsuario);
         }
-        private void ValidarDados(Usuario _usuario)
+        private void ValidarDados(Usuario _usuario, string _confirmacao)
 
         {
+            if (_usuario.Senha != _confirmacao)
+            {
+                throw new Exception("As senhas devem ser iguais.");
+            }
             if (_usuario.Senha.Length <= 3)
             {
                 throw new Exception("A senha deve ter mais de 3 caracteres.");

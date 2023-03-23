@@ -26,21 +26,33 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            UsuarioBLL usuarioBLL = new UsuarioBLL();
-            usuarioBindingSource.EndEdit();
+            try
+            {
+                UsuarioBLL usuarioBLL = new UsuarioBLL();
+                usuarioBindingSource.EndEdit();
 
-            if (id == 0)
-                usuarioBLL.Inserir((Usuario)usuarioBindingSource.Current);
-            else
-                usuarioBLL.Alterar((Usuario)usuarioBindingSource.Current);
-                           
-            MessageBox.Show("Registro salvo com sucesso");
-            Close();
+                if (id == 0)
+                    usuarioBLL.Inserir((Usuario)usuarioBindingSource.Current, textBoxConfirmacao.Text);
+                else
+                    usuarioBLL.Alterar((Usuario)usuarioBindingSource.Current, textBoxConfirmacao.Text);
+
+                MessageBox.Show("Registro salvo com sucesso");
+                Close();
+            }
+             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void textBoxConfirmacao_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

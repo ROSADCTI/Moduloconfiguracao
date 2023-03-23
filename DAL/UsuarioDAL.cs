@@ -107,7 +107,7 @@ namespace DAL
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             List<Usuario> usuarios = new List<Usuario>();
-            Usuario usuario = new Usuario();
+            Usuario usuario;
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -383,7 +383,6 @@ namespace DAL
                 cn.Close();
             }
         }
-
 
         public void AdicionaGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
         {
