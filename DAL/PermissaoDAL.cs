@@ -30,7 +30,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir uma descrissao. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu erro ao tentar inserir uma permissão no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -59,7 +59,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu erro ao tentar alterar uma permissão no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -84,7 +84,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de exluir um usuário.por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu erro ao tentar excluir uma permissão no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -122,7 +122,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentetiva jde buscar dos dados. Por favor verifique sua conexao", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar todas as permissoes no banco de dados. Por favor verifique sua conexao", ex);
             }
             finally
             {
@@ -142,15 +142,16 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,descrissao";
+                cmd.CommandText = "SELECT Id, NomeGrupo FROM GrupoUsuario WHERE Descricao LIKE @Descricao";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Descricao", "%" + _descricao + "%");
                 cn.Open();
+               
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {
-                        
+                        permissao = new Permissao();
                         permissao.IdPermissao = Convert.ToInt32(rd["Id"]);
                         permissao.descricao = rd["descricao "].ToString();
                         permissoes.Add(permissao);
@@ -162,7 +163,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar todas as permissoes no banco de dados.Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -180,13 +181,12 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,descrissao";
+                cmd.CommandText = "SELECT Id, NomeGrupo FROM GrupoUsuario WHERE Id LIKE @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("Id", _id);
                 cn.Open();
+                
                 using (SqlDataReader rd = cmd.ExecuteReader())
-
-
                 {
                     while (rd.Read())
                     {
@@ -202,7 +202,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar permissoes por Id no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {

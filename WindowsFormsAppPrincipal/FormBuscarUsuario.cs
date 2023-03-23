@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Models;
@@ -22,17 +14,17 @@ namespace WindowsFormsAppPrincipal
         {
             InitializeComponent();
         }
-            
+
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-              usuarioBindingSource.DataSource = new UsuarioBLL().BuscarTodos();
+                usuarioBindingSource.DataSource = new UsuarioBLL().BuscarTodos();
 
-            } 
-             catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);    
+                MessageBox.Show(ex.Message);
             }
         }
         private void buttonExcluirusauario_Click(object sender, EventArgs e)
@@ -47,13 +39,11 @@ namespace WindowsFormsAppPrincipal
                 return;
 
             int id = ((Usuario)usuarioBindingSource.Current).Id;
-            new UsuarioBLL(). Excluir(id);
+            new UsuarioBLL().Excluir(id);
             usuarioBindingSource.RemoveCurrent();
 
             MessageBox.Show("Registro excluído com sucesso!");
         }
-
-       
 
         private void buttonAlterar_Click(object sender, EventArgs e)
         {
@@ -75,15 +65,15 @@ namespace WindowsFormsAppPrincipal
             }
 
         }
-                            
-            private void buttonAdicionar_Click(object sender, EventArgs e)
+
+        private void buttonAdicionar_Click(object sender, EventArgs e)
+        {
+            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario())
             {
-                using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario())
-                {
-                    frm.ShowDialog();
-                }
-                buttonBuscar_Click(null, null);
+                frm.ShowDialog();
             }
+            buttonBuscar_Click(null, null);
+        }
 
         private void buttonAdicionagrupousuario_Click(object sender, EventArgs e)
         {
@@ -95,16 +85,16 @@ namespace WindowsFormsAppPrincipal
                     if (frm.Id != 0)
                     {
                         int idUsuario = ((Usuario)usuarioBindingSource.Current).Id;
-                        new UsuarioBLL().AdicionarGrupoUsuario(IdUsuario, frm.Id);
-                    }
-
-                    catch (Exception ex)
-
-                    {
-                        MessageBox.Show(ex.Message);
+                        new UsuarioBLL().AdicionarGrupoUsuario(idUsuario, frm.Id);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ": " + ex.InnerException.Message);
             }
         }
     }
 }
+    
+

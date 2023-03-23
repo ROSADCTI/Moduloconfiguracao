@@ -136,7 +136,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro na tentetiva jde buscar dos dados. Por favor verifique sua conexao", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuários no banco de dados. Por favor verifique sua conexao", ex);
             }
             finally
             {
@@ -335,7 +335,7 @@ namespace DAL
                                     WHERE IdUsuario = IdUsuario AND IdGrupoUsuario = @IdGrupoUsuario;      
                  cmd.CommandType = System.Data.CommandType.Text";
 
-                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idGrupoUsuario);
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idPermissao);
                 cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
                 cn.Open();
 
@@ -372,7 +372,7 @@ namespace DAL
                 cn.Open();
                 cmd.ExecuteNonQuery();
 
-
+                throw new Exception("Terminar a implementação do UsuarioPertenceAoGrupo na classe UsuarioDAL");
             }
             catch (Exception ex)
             {
