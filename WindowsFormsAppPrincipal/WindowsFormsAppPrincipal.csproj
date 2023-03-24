@@ -82,6 +82,12 @@
     <Compile Include="FormGrupoUsualrio.Designer.cs">
       <DependentUpon>FormGrupoUsualrio.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPermissao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPermissao.Designer.cs">
+      <DependentUpon>FormPermissao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTelaprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormGrupoUsualrio.resx">
       <DependentUpon>FormGrupoUsualrio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPermissao.resx">
+      <DependentUpon>FormPermissao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTelaprincipal.resx">
       <DependentUpon>FormTelaprincipal.cs</DependentUpon>

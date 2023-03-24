@@ -16,5 +16,10 @@ namespace WindowsFormsAppPrincipal
         {
             InitializeComponent();
         }
+
+        private void FormGrupoUsualrio_Load(object sender, EventArgs e)
+        {
+            grupoUsuarioBindingSource.DataSource = new GrupoUsuarioBLL().BuscarPorTodos();
+        } 
     }
 }

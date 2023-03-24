@@ -42,7 +42,6 @@
             this.buttonAdicionar = new System.Windows.Forms.Button();
             this.buttonExcluirPermissao = new System.Windows.Forms.Button();
             this.buttonAdicionarPermissao = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioDataGridView)).BeginInit();
@@ -105,7 +104,6 @@
             this.permitirDataGridView.AutoGenerateColumns = false;
             this.permitirDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.permitirDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
             this.descricao});
             this.permitirDataGridView.DataSource = this.permitirBindingSource;
             this.permitirDataGridView.Location = new System.Drawing.Point(684, 119);
@@ -189,20 +187,11 @@
             this.buttonAdicionarPermissao.Text = "Adicionar";
             this.buttonAdicionarPermissao.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "IdPermissao";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Id permissao";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 20;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 120;
-            // 
             // descricao
             // 
             this.descricao.DataPropertyName = "descricao";
             this.descricao.HeaderText = "Descricão";
-            this.descricao.MinimumWidth = 10;
+            this.descricao.MinimumWidth = 15;
             this.descricao.Name = "descricao";
             this.descricao.ReadOnly = true;
             this.descricao.Width = 150;
@@ -250,7 +239,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
     }
 }

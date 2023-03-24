@@ -16,5 +16,10 @@ namespace WindowsFormsAppPrincipal
         {
             InitializeComponent();
         }
+
+        private void permissaoBindingNavigator_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
     }
 }

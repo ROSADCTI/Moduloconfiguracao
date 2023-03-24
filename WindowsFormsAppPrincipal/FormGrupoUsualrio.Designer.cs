@@ -221,6 +221,7 @@
             this.Name = "FormGrupoUsualrio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Grupo Usuario";
+            this.Load += new System.EventHandler(this.FormGrupoUsualrio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.permitirBindingSource)).EndInit();
