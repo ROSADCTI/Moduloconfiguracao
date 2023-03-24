@@ -40,12 +40,22 @@ INSERT INTO PermissaoGrupoUsuario(IdGrupoUsuario , IdPermissao)VALUES(1,8)
 INSERT INTO PermissaoGrupoUsuario(IdGrupoUsuario , IdPermissao)VALUES(1,9)
 INSERT INTO PermissaoGrupoUsuario(IdGrupoUsuario , IdPermissao)VALUES(1,10)
 
-INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(1,1)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(1,2)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(3,4)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(8,5)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(9,3)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(10,3)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(10,2)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(11,6)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(12,4)
+INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(11,2)
+
 
  
  
  
 SELECT * FROM Usuario
+SELECT * FROM GrupoUsuario
 SELECT * FROM UsuarioGrupoUsuario
 
 

@@ -22,7 +22,7 @@ namespace BLL
         }
 
 
-        public void Alterar(Usuario _usuario,  string _confirmacao)
+        public void Alterar(Usuario _usuario, string _confirmacao)
 
         {
             ValidarPermissao(3);
@@ -54,7 +54,7 @@ namespace BLL
         }
         public List<Usuario> BuscarPorNome(string _nome)
         {
-            ValidarPermissao(1);        
+            ValidarPermissao(1);
             return new UsuarioDAL().BuscarPorNome(_nome);
         }
         public List<Usuario> BuscarPorNomeUsuario(string _nomeUsuario)
@@ -82,23 +82,26 @@ namespace BLL
         public void ValidarPermissao(int _idPermissao)
         {
             //if (!new UsuarioDAL().ValidarPermissao(Contantes.IdUsuarioLogado, _idPermissao))
-                  //throw new Exception("Você não tem permissão de realizar essa operação. Procure o administrador do sistema.");
+            //throw new Exception("Você não tem permissão de realizar essa operação. Procure o administrador do sistema.");
 
         }
 
         public void AdicionarGrupoUsuario(int _idUsuario, int IdGrupoUsuario)
         {
-            {
                 if (!new UsuarioDAL().UsuarioPertenceAoGrupo(_idUsuario, IdGrupoUsuario))
-                    new UsuarioDAL().AdicionaGrupoUsuario(_idUsuario, IdGrupoUsuario);
-            }
-           Public void RemoverGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
+                     new UsuarioDAL().AdicionaGrupoUsuario(_idUsuario, IdGrupoUsuario);
+        
+        }
+
+        public void RemoverGrupoUsuario(int _IdUsuario, int _IdGrupoUsuario)
             {
-                new UsuarioDAL().RemoverGrupoUsuario(_idUsuario, IdGrupoUsuario);
+                new UsuarioDAL().RemoverGrupoUsuario(_IdUsuario, _IdGrupoUsuario);
             }
+
+
+
+            
+
     }
-
-
-
 }
 

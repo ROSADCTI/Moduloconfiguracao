@@ -20,7 +20,7 @@ using System.Windows.Markup;
             {
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"INSERT INTO GrupoUsuario(NomeGrupo)      
-                                  VALUE(@NomeGrupo )";
+                                  VALUES(@NomeGrupo )";
 
                 cmd.Parameters.AddWithValue("@NomeGrupo", _grupousuario.NomeGrupo);
 
@@ -117,7 +117,7 @@ using System.Windows.Markup;
                     {
                         grupousuario = new GrupoUsuario();
                         grupousuario.IdGrupo = Convert.ToInt32(rd["Id"]);
-                        grupousuario.NomeGrupo = rd["NomeGrupo "].ToString();
+                        grupousuario.NomeGrupo = rd["NomeGrupo"].ToString();
                         grupousuarios.Add(grupousuario);
                     }
                 }

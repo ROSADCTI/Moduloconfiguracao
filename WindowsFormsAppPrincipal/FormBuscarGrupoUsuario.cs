@@ -50,16 +50,16 @@ namespace WindowsFormsAppPrincipal
             if (MessageBox.Show("Deseja realmente excluir este registro?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
-            int id = ((Usuario)grupoUsuarioBindingSource.Current).Id;
-            new UsuarioBLL().Excluir(id);
-           grupoUsuarioBindingSource.RemoveCurrent();
+            int id = ((GrupoUsuario)grupoUsuarioBindingSource.Current).IdGrupo;
+            new GrupoUsuarioBLL().Excluir(id);
+              grupoUsuarioBindingSource.RemoveCurrent();
 
             MessageBox.Show("Registro excluído com sucesso!");
         }
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
-            using (FormCadastrodeUsuario frm = new FormCadastrodeUsuario())
+            using (FormCadastroGrupoUsuario frm = new FormCadastroGrupoUsuario())
             {
                 frm.ShowDialog();
             }

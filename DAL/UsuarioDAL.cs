@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 
-namespace DAL
-{
+
+ namespace DAL
+ {
     public class UsuarioDAL
     {
         public void Inserir(Usuario _usuario)
@@ -69,7 +70,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu erro ao tentar alterar um usuario no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -95,7 +96,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de exluir um usuário.por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu erro ao tentar excluir um usuario no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -180,7 +181,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar os usuários por CPF do banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -226,7 +227,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar os usuários por nome do banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -317,7 +318,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar os usuários por id do banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -349,7 +350,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar existência de grupo vinculado ao usuário no banco de dados");
+                throw new Exception("Ocorreu um erro ao tentar buscar os usuários por CPF do banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -365,18 +366,24 @@ namespace DAL
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"SELECT 1 FROM UsuarioGrupoUsuario 
                                 WHERE IdUsuario = @idUsuario AND IdGrupoUsuario = @idGrupoUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@idGrupoUsuario", _IdGrupoUsuario);
                 cmd.Parameters.AddWithValue("@idUsuario", _idUsuario);
-                
-                cmd.Connection = cn;
-                cn.Open();
-                cmd.ExecuteNonQuery();
 
-                throw new Exception("Terminar a implementação do UsuarioPertenceAoGrupo na classe UsuarioDAL");
+                
+                cn.Open();
+                using(SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    if(rd.Read())   
+                        return true;
+                }
+                return false;
+
+     
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar existencia de grupo vinculado ao usuario no banco de dados: ", ex);
+                throw new Exception("Ocorreu um erro ao tentar existencia de grupo vinculado ao usuario no banco de dados.Por favor verifique sua conexão", ex );
             }
             finally
             {
@@ -405,7 +412,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar vincular um grupo a um usuário no banco de dados.");
+                throw new Exception("Ocorreu um erro ao tentar vincular um grupo a um usuário no banco de dados. Por favor verifique sua conexão", ex);
             }
             finally
             {
@@ -413,30 +420,39 @@ namespace DAL
             }
 
         }
-     }
-    public void RemoverGrupoUsuario(Usuario _usuario)
-    {
-        SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
 
-        try
+        
+        public void RemoverGrupoUsuario(int _idUsuario,int _IdGrupoUsuario)
         {
-            SqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = @"DELETE FROM  UsuarioGrupoUsuario Where IdUsuario = @IdUsuario AND IdGrupoUsuario";
-            
-            cn.Open();
-            cmd.ExecuteNonQuery();
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"DELETE FROM  UsuarioGrupoUsuario 
+                                   WHERE IdUsuario = @IdUsuario AND IdGrupoUsuario = @IdGrupoUsuario ";
+
+                cmd.CommandType =System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@idUsuario", _idUsuario);
+                cmd.Parameters.AddWithValue("@idGrupoUsuario", _IdGrupoUsuario);
+
+                cmd.Connection = cn;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu erro ao tentar remover um grupo do usuário no banco de dados: Por favor verifique sua conexão", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+
 
 
         }
-        catch (Exception ex)
-        {
-            throw new Exception("Ocorreu um erro ao tentar inserir um usuário no banco de dados: ", ex);
-        }
-        finally
-        {
-            cn.Close();
-        }
-
-
-
     }
+}

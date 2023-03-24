@@ -58,6 +58,11 @@ namespace WindowsFormsAppPrincipal
         {
             Close();
         }
+
+        private void FormConsultaGrupoUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
                  

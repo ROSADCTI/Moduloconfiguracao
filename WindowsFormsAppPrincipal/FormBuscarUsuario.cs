@@ -8,8 +8,9 @@ namespace WindowsFormsAppPrincipal
 {
     public partial class FormBuscarUsuario : Form
     {
-        public object IdUsuario { get; private set; }
 
+
+        
         public FormBuscarUsuario()
 
         {
@@ -100,9 +101,10 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
-                int id = ((GrupoUsuario)gPusuariosBingindSource.Current).IdGrupo;
-                int idUsuario = ((Usuario)UsuarioBindingSource.Current).Id;
-                new UsuarioBLL().RemoverGrupo
+                int idGrupoUsuario = ((GrupoUsuario)gPusuariosBindingSource.Current).IdGrupo;
+                int idUsuario = ((Usuario)usuarioBindingSource.Current).Id;
+                new UsuarioBLL().RemoverGrupoUsuario(idUsuario, idGrupoUsuario);
+                gPusuariosBindingSource.RemoveCurrent();
             }
 
             catch (Exception ex)
@@ -111,6 +113,7 @@ namespace WindowsFormsAppPrincipal
             }
         }
 
+        
     }
 }
     

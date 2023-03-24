@@ -30,13 +30,13 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            UsuarioBLL grupousuarioBLL = new UsuarioBLL();
+            GrupoUsuarioBLL grupousuarioBLL = new GrupoUsuarioBLL();
             grupoUsuarioBindingSource.EndEdit();
 
             if (id == 0)
-                grupousuarioBLL.Inserir((Usuario)grupoUsuarioBindingSource.Current);
+                grupousuarioBLL.Inserir((GrupoUsuario)grupoUsuarioBindingSource.Current);
             else
-                grupousuarioBLL.Alterar((Usuario)grupoUsuarioBindingSource.Current);
+                grupousuarioBLL.Alterar((GrupoUsuario)grupoUsuarioBindingSource.Current);
 
             MessageBox.Show("Registro salvo com sucesso");
             Close();
