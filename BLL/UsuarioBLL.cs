@@ -98,10 +98,14 @@ namespace BLL
                 new UsuarioDAL().RemoverGrupoUsuario(_IdUsuario, _IdGrupoUsuario);
             }
 
-
-
-            
-
+        public void Altenticar(object tex, object t)
+        {
+            Usuario usuario = new Usuario().BuscarPorNomeUsuario(_nomeUsuario);
+            if (_senha == usuario.Senha && usuario.Ativo)
+                Constantes.IdUsuarioLogado = usuario.Id;
+            else
+                throw new Exception("Usuario ou senha inválida.");
+        }
     }
 }
 

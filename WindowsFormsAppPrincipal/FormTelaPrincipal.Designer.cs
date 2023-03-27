@@ -72,6 +72,7 @@
             this.permissãoToolStripMenuItem.Name = "permissãoToolStripMenuItem";
             this.permissãoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.permissãoToolStripMenuItem.Text = "Permissão";
+            this.permissãoToolStripMenuItem.Click += new System.EventHandler(this.permissãoToolStripMenuItem_Click);
             // 
             // grupoDeUsuárioToolStripMenuItem
             // 

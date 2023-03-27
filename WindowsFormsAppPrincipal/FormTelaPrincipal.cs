@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Models;
+using System.Security.Cryptography;
 
 namespace WindowsFormsAppPrincipal
 {
@@ -46,8 +47,21 @@ namespace WindowsFormsAppPrincipal
         }
 
         private void FormTelaprincipal_Load(object sender, EventArgs e)
+         
         {
-            Contantes.IdUsuarioLogado = 6;
+            try
+            {
+                using (FormLogin frm = new FormLogin())
+                {
+                    frm.ShowDialog();
+                    if (!frm.Logou)
+                        Application.Exit();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,6 +75,14 @@ namespace WindowsFormsAppPrincipal
         private void grupoDeUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (FormBuscarGrupoUsuario frm = new FormBuscarGrupoUsuario())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void permissãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(FormPermissao frm = new FormPermissao())
             {
                 frm.ShowDialog();
             }

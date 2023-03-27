@@ -1,4 +1,4 @@
-
+SELECT
 
 INSERT INTO Permissao(Id, Descricao)VALUES(1,'Visualizar usuário')
 INSERT INTO Permissao(Id, Descricao)VALUES(2,'Cadastrar Usuario')
@@ -57,6 +57,7 @@ INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(11,2)
 SELECT * FROM Usuario
 SELECT * FROM GrupoUsuario
 SELECT * FROM UsuarioGrupoUsuario
+SELECT * FROM Permissao
 
 
   DECLARE @IdUsuario INT = 1
