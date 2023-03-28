@@ -109,6 +109,18 @@ INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(11,6)
 INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(12,4)
 INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(11,2)
 
+INSERT INTO Permissao(Id, Descricao)VALUES(1,'Visualizar usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(2,'Usuário cadastrar')
+INSERT INTO Permissao(Id, Descricao)VALUES(3,'Alterar usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(4,'Excluir usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(5,'Visualizar grupo de usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(6,'Cadastrar grupo de usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(7,'Alterar grupo de usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(8,'Excluir grupo de usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(9,'Adicionar permissão a um grupo de usuário')
+INSERT INTO Permissao(Id, Descricao)VALUES(10,'Adicionar grupo de usuário a um usuário')
+
+
 
 SELECT * FROM Usuario
 SELECT * FROM UsuarioGrupoUsuario
@@ -129,7 +141,7 @@ WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario AND PermissaoGrupoUsuario.IdPer
 SELECT * FROM UsuarioGrupoUsuario
 GO
 
-DECLARE @IdUsuario INT = 24
+DECLARE @IdUsuario INT = 1
 
 SELECT GrupoUsuario.Id, GrupoUsuario.NomeGrupo FROM GrupoUsuario
 INNER JOIN UsuarioGrupoUsuario ON GrupoUsuario.Id = UsuarioGrupoUsuario.IdGrupoUsuario
