@@ -143,7 +143,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id, NomeGrupo FROM GrupoUsuario WHERE Descricao LIKE @Descricao";
+                cmd.CommandText = "SELECT Id, Descricao FROM Permissao WHERE Descricao LIKE @Descricao";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Descricao", "%" + _descricao + "%");
                 cn.Open();
@@ -154,7 +154,7 @@ namespace DAL
                     {
                         permissao = new Permissao();
                         permissao.IdPermissao = Convert.ToInt32(rd["Id"]);
-                        permissao.descricao = rd["descricao "].ToString();
+                        permissao.descricao = rd["Descricao"].ToString();
                         permissoes.Add(permissao);
                     }
                 }

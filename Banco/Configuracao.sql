@@ -68,6 +68,8 @@ FOREIGN KEY (IdGrupoUsuario) REFERENCES GrupoUsuario(Id)
 
 GO
 
+
+
 INSERT INTO Permissao(Id, Descricao)VALUES(1,'Visualizar usuário')
 INSERT INTO Permissao(Id, Descricao)VALUES(2,'Cadastrar Usuario')
 INSERT INTO Permissao(Id, Descricao)VALUES(3,'Alterar usuário')
@@ -127,7 +129,7 @@ SELECT * FROM Permissao
 INNER JOIN UsuarioGrupoUsuario ON PermissaoGrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.IdGrupoUsuario
 WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario AND PermissaoGrupoUsuario.IdPermissao = @IdPermissao
 
- --BUSCAR O GRUPO EM QUE O USUARIO PERTENCE
+ 
 SELECT * FROM UsuarioGrupoUsuario
 GO
 
