@@ -11,6 +11,7 @@ namespace DAL
 {
     public class PermissaoDAL
     {
+        SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
         public void inserir(Permissao _permissao)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
