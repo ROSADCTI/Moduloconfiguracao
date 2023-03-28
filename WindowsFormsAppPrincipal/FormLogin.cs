@@ -12,8 +12,8 @@ using System.Windows.Forms;
 namespace WindowsFormsAppPrincipal
 {
     public partial class FormLogin : Form
-    {  
-        bool Logou ;
+    {
+        bool Logou;
         public FormLogin()
         {
 
@@ -25,9 +25,29 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonEntrar_Click(object sender, EventArgs e)
         {
-            new UsuarioBLL().Altenticar(textBoxUsuario.Text, textBoxSenha.Text);
-            Logou = true;
-            Close();
+            try
+            {
+                new UsuarioBLL().Altenticar(textBoxUsuario.Text, textBoxSenha.Text);
+                Logou = true;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
 
         }
     }

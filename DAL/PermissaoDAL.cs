@@ -21,7 +21,7 @@ namespace DAL
                 cmd.CommandText = @"INSERT INTO Usuario(Descricao)
                                   VALUE(@Descricao )";
                 cmd.Parameters.AddWithValue("@Descricao", _permissao.descricao);
-                
+
                 cmd.Connection = cn;
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -50,7 +50,7 @@ namespace DAL
 
                 cmd.Parameters.AddWithValue("@Id", _permissao.IdPermissao);
                 cmd.Parameters.AddWithValue("@Descricao", _permissao.descricao);
-                
+
                 cmd.Connection = cn;
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -95,7 +95,7 @@ namespace DAL
         public List<Permissao> BuscarPorTodos()
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-            List<Permissao> permissoes = new List<Permissao >();
+            List<Permissao> permissoes = new List<Permissao>();
             Permissao permissao;
             try
             {
@@ -109,11 +109,11 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
-                       permissao = new Permissao();
+                        permissao = new Permissao();
                         permissao.IdPermissao = Convert.ToInt32(rd["Id"]);
                         permissao.descricao = rd["descricao "].ToString();
-                        
-                        
+
+
 
                         permissoes.Add(permissao);
                     }
@@ -135,7 +135,7 @@ namespace DAL
 
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             List<Permissao> permissoes = new List<Permissao>();
-            Permissao permissao = new Permissao ();
+            Permissao permissao = new Permissao();
 
 
             try
@@ -146,7 +146,7 @@ namespace DAL
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Descricao", "%" + _descricao + "%");
                 cn.Open();
-               
+
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
@@ -185,7 +185,7 @@ namespace DAL
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("Id", _id);
                 cn.Open();
-                
+
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
@@ -209,11 +209,49 @@ namespace DAL
                 cn.Close();
             }
 
-        }  
+        }
+        internal List<Permissao> BuscarporIdGrupoUsuario(int _idGrupoUsuario)
+        {
+            Permissao permissao = new Permissao();
+            List<Permissao> permissoes = new List<Permissao>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT Permissao.Id, Permissao.Descricao FROM Permissao
+                                    INNER JOIN PermissaoGrupoUsuario ON Permissao.Id = PermissaoGrupoUsuario.IdPermissao
+                                    WHERE PermissaoGrupoUsuario.IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@idGrupoUsuario", _idGrupoUsuario);
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        permissao = new Permissao();
+                        permissao.IdPermissao = Convert.ToInt32(rd["ID"]);
+                        permissao.descricao = rd["Descricao"].ToString();
+                        permissoes.Add(permissao);
+
+                    }
+                }
+                return permissoes;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar buscar as permissões de usuários por id do banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+
+
+
     }
-
-
-                   
-
 }
 

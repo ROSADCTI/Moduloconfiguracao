@@ -98,9 +98,9 @@ namespace BLL
                 new UsuarioDAL().RemoverGrupoUsuario(_IdUsuario, _IdGrupoUsuario);
             }
 
-        public void Altenticar(object tex, object t)
+        public void Altenticar(string _nomeUsuario, string _senha)
         {
-            Usuario usuario = new Usuario().BuscarPorNomeUsuario(_nomeUsuario);
+            Usuario usuario = new UsuarioDAL().BuscarPorNomeUsuario(_nomeUsuario);
             if (_senha == usuario.Senha && usuario.Ativo)
                 Constantes.IdUsuarioLogado = usuario.Id;
             else

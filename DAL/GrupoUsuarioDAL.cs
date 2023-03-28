@@ -252,6 +252,31 @@ using System.Windows.Markup;
                 cn.Close();
             }
         }
+
+        public void RemoverPermissao(int _idPermissao, int _idGrupoUsuario)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"DELETE FROM PermissaoGrupoUsuario 
+                                    WHERE IdPermissao = @IdPermissao AND IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdPermissao", _idPermissao);
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idGrupoUsuario);
+                cmd.Connection = cn;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu erro ao tentar remover uma permissao de um grupo no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
     }
 }
            

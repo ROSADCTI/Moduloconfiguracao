@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,10 +16,13 @@ namespace WindowsFormsAppPrincipal
 {
     public partial class FormPermissao : Form
     {
+        public int Id;
         public FormPermissao()
+
         {
             InitializeComponent();
         }
+        
 
         private void permissaoBindingNavigator_RefreshItems(object sender, EventArgs e)
         {
@@ -26,44 +31,42 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-            permissaoBindingSource.DataSource = new PermissaoBLL().BuscarPorTodos();
-        }
-
-        private void buttonAlterar_Click(object sender, EventArgs e)
-        {
-            int id = ((Permissao)permissaoBindingSource.Current).IdPermissao;
-            using (FormCadastroPermissao frm = new FormCadastroPermissao(id))
+            try
             {
-                frm.ShowDialog();
+                permissaoBindingSource.DataSource = new PermissaoBLL().BuscarPorDescricao(TextBoxBuscarpermissao.Text);
             }
-            buttonBuscar_Click(null, null);
-        }
-
-        private void buttonExcluir_Click(object sender, EventArgs e)
-        {
-            if (permissaoBindingSource .Count <= 0)
+            catch(Exception ex)
             {
-                MessageBox.Show("Não existe registro para ser excluído");
-                return;
+                MessageBox.Show(ex.Message);
             }
-
-            if (MessageBox.Show("Deseja realmente excluir este registro?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
-
-            int id = ((Permissao)permissaoBindingSource.Current).IdPermissao;
-            new GrupoUsuarioBLL().Excluir(id);
-            permissaoBindingSource.RemoveCurrent();
-
-            MessageBox.Show("Registro excluído com sucesso!");
+            
         }
-
-        private void buttonAdicionar_Click(object sender, EventArgs e)
+        private void buttonCancelar_Click(object sender, EventArgs e)
         {
-            using (FormPermissao frm = new FormPermissao())
-            {
-                frm.ShowDialog();
-            }
-            buttonBuscar_Click(null, null);
+            Close();
         }
+
+
+        private void buttonSelecionar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (permissaoBindingSource.Count > 0)
+                {
+                    Id = ((Permissao)permissaoBindingSource.Current).IdPermissao;
+                    Close();
+                }
+                else
+                    MessageBox.Show("Não Existe Registro para se Selecionado.");
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+             
+
     }
 }
