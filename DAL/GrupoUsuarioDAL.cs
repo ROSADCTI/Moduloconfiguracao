@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
- namespace DAL
- {
+namespace DAL
+{
     public class GrupoUsuarioDAL
     {
         public void inserir(GrupoUsuario _grupousuario)
@@ -64,7 +64,7 @@ using System.Windows.Markup;
             }
             catch (Exception ex)
             {
-                throw new Exception("O correu um erro ao tentarde alterar um grupo de usuário no banco de dados.", ex);        
+                throw new Exception("O correu um erro ao tentarde alterar um grupo de usuário no banco de dados.", ex);
             }
             finally
             {
@@ -148,9 +148,9 @@ using System.Windows.Markup;
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nomegrupo", "%" + _nomegrupo + "%");
                 cn.Open();
-                
+
                 using (SqlDataReader rd = cmd.ExecuteReader())
-                
+
                 {
                     while (rd.Read())
                     {
@@ -227,7 +227,7 @@ using System.Windows.Markup;
                     INNER JOIN UsuarioGrupoUsuario ON GrupoUsuario.Id = UsuarioGrupoUsuario.IdGrupoUsuario
                     WHERE UsuarioGrupoUsuario.IdUsuario = @Idusuario";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Idusuario",_idUsuario);
+                cmd.Parameters.AddWithValue("@Idusuario", _idUsuario);
 
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
@@ -238,7 +238,7 @@ using System.Windows.Markup;
                         grupousuario.IdGrupo = Convert.ToInt32(rd["Id"]);
                         grupousuario.NomeGrupo = rd["NomeGrupo"].ToString();
                         grupousuarios.Add(grupousuario);
-                        
+
                     }
                 }
                 return grupousuarios;
@@ -277,6 +277,71 @@ using System.Windows.Markup;
                 cn.Close();
             }
         }
+
+        public bool PermissaoPertenceAoGrupo(int idGrupoUsuario, int idPermissao)
+        {
+            throw new NotImplementedException();
+        }
+        public bool UsuarioPertenceAoGrupo(int _idUsuario, int _idGrupoUsuario)
+        {
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT 1 FROM UsuarioGrupoUsuario
+                                    WHERE IdUsuario = @IdUsuario AND IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idGrupoUsuario);
+                cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                        return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar existência de grupo vinculado a um usuário no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public void AdicionarPermissao(int idGrupoUsuario, int idPermissao)
+        {
+            throw new NotImplementedException();
+        }
+       public void AdicionarGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
+        {
+        SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"INSERT INTO UsuarioGrupoUsuario(IdUsuario, IdGrupoUsuario) 
+                                        VALUES(@IdUsuario, @IdGrupoUsuario)";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idGrupoUsuario);
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar vincular um grupo a um usuário no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+       }
     }
-}
-           
+}        

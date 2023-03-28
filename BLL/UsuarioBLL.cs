@@ -42,22 +42,22 @@ namespace BLL
             ValidarPermissao(1);
             return new UsuarioDAL().BuscarPorTodos();
         }
-        public List<Usuario> BuscarPorId(int _id)
+        public Usuario BuscarPorId(int _id)
         {
             ValidarPermissao(1);
             return new UsuarioDAL().BuscarPorId(_id);
         }
-        public List<Usuario> BuscarPorCPF(string _cpf)
+        public Usuario BuscarPorCPF(string _cpf)
         {
             ValidarPermissao(1);
             return new UsuarioDAL().BuscarPorCPF(_cpf);
         }
-        public List<Usuario> BuscarPorNome(string _nome)
+        public Usuario BuscarPorNome(string _nome)
         {
             ValidarPermissao(1);
             return new UsuarioDAL().BuscarPorNome(_nome);
         }
-        public List<Usuario> BuscarPorNomeUsuario(string _nomeUsuario)
+        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
 
         {
             ValidarPermissao(1);
@@ -81,8 +81,8 @@ namespace BLL
         }
         public void ValidarPermissao(int _idPermissao)
         {
-            //if (!new UsuarioDAL().ValidarPermissao(Contantes.IdUsuarioLogado, _idPermissao))
-            //throw new Exception("Você não tem permissão de realizar essa operação. Procure o administrador do sistema.");
+            if (!new UsuarioDAL().ValidarPermissao(Constantes.IdUsuarioLogado, _idPermissao))
+                throw new Exception("Você não tem permissão de realizar essa operação. Procure o administrador do sistema.");
 
         }
 
@@ -102,9 +102,14 @@ namespace BLL
         {
             Usuario usuario = new UsuarioDAL().BuscarPorNomeUsuario(_nomeUsuario);
             if (_senha == usuario.Senha && usuario.Ativo)
+            {
                 Constantes.IdUsuarioLogado = usuario.Id;
+            } 
             else
+            {
                 throw new Exception("Usuario ou senha inválida.");
+            }
+                
         }
     }
 }

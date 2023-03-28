@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
-using Models;
 using System.Security.Cryptography;
 
 namespace WindowsFormsAppPrincipal
@@ -19,31 +18,7 @@ namespace WindowsFormsAppPrincipal
         public FormTelaprincipal()
         {
             InitializeComponent();
-            //Usuario usuario = new Usuario();
-            //usuario.NomeUsuario = "Rosilene";
-            //usuario.Nome = "Rosa";
-            //usuario.Email = "Clementerosa@gmail.com";
-            //usuario.CPF = "456.556.015.91";
-            //usuario.Senha = "R12356c";
-            //usuario.Ativo = true;
-
             
-            //usuario.NomeUsuario = "WilllianAraujo";
-            //usuario.Nome = "Willian";
-            //usuario.Email = "Solbrilha@gmail.com";
-            //usuario.CPF = "564.556.234.00";
-            //usuario.Senha = "5689";
-            //usuario.Ativo = true;
-
-            
-            //usuario.NomeUsuario = "Solangesilva";
-            //usuario.Nome = "Solange";
-            //usuario.Email = "ceuazul@hotmail.com";
-            //usuario.CPF = "333.286.015.30";
-            //usuario.Senha = "569201";
-            //usuario.Ativo = true;
-
-            //new UsuarioBLL(). Inserir(usuario);
         }
 
         private void FormTelaprincipal_Load(object sender, EventArgs e)

@@ -144,7 +144,7 @@ using Models;
                 cn.Close();
             }
         }
-        public List<Usuario> BuscarPorCPF(string _cpf)
+        public Usuario BuscarPorCPF(string _cpf)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             List<Usuario> usuarios = new List<Usuario>();
@@ -171,12 +171,11 @@ using Models;
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
                         usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
-                        usuarios.Add(usuario);
-
+                        
                     }
                 }
 
-                return usuarios;
+                return usuario;
             }
 
             catch (Exception ex)
@@ -189,10 +188,9 @@ using Models;
             }
         }
 
-        public List<Usuario> BuscarPorNome(string _nome)
+        public Usuario BuscarPorNome(string _nome)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-            List<Usuario> usuarios = new List<Usuario>();
             Usuario usuario = new Usuario();
 
 
@@ -217,12 +215,12 @@ using Models;
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
                         usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
-                        usuarios.Add(usuario);
+                        
 
                     }
                 }
 
-                return usuarios;
+                return usuario;
             }
 
             catch (Exception ex)
@@ -235,10 +233,10 @@ using Models;
             }
         }
 
-        public List<Usuario> BuscarPorNomeUsuario(string _nomeUsuario)
+        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-            List<Usuario> usuarios = new List<Usuario>();
+            
             Usuario usuario = new Usuario();
 
 
@@ -246,7 +244,8 @@ using Models;
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id,Nome,NomeUsuario,Email,CPF,Ativo FROM Usuario WHERE NomeUsuario LIKE = @nomeusuario";
+                cmd.CommandText = @"SELECT Id,Nome,NomeUsuario,Email,CPF,
+                                Ativo,Senha FROM Usuario WHERE NomeUsuario LIKE @nomeusuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@nomeusuario", "%" + _nomeUsuario + "%");
                 cn.Open();
@@ -263,27 +262,24 @@ using Models;
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
                         usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
-                        usuarios.Add(usuario);
-
                     }
                 }
 
-                return usuarios;
+                return usuario;
             }
 
             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro na tentativa de inserir um usuário. por favor verifique sua conexão", ex);
+                throw new Exception("ocorreu um erro na tentativa de buscar o usuário. por favor verifique sua conexão", ex);
             }
             finally
             {
                 cn.Close();
             }
         }
-        public List<Usuario> BuscarPorId(int _id)
+        public Usuario BuscarPorId(int _id)
         {
-            List<Usuario> usuarios = new List<Usuario>();
-            Usuario usuario = new Usuario();
+             Usuario usuario = new Usuario();
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
 
 
@@ -309,12 +305,12 @@ using Models;
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                         usuario.Senha = rd["Senha"].ToString();
                         usuario.GPusuarios = new GrupoUsuarioDAL().BuscarPorIdUsuario(usuario.Id);
-                        usuarios.Add(usuario);
+                        
 
                     }
                 }
 
-                return usuarios;
+                return usuario;
             }
             catch (Exception ex)
             {
@@ -333,10 +329,13 @@ using Models;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT 1 FROM PermissaoGrupoUsuario
-                                    WHERE IdUsuario = IdUsuario AND IdGrupoUsuario = @IdGrupoUsuario;      
-                 cmd.CommandType = System.Data.CommandType.Text";
+                                    INNER JOIN UsuarioGrupoUsuario
+                                    ON PermissaoGrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.IdGrupoUsuario
+                                    WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario    
+                                    AND PermissaoGrupoUsuario.IdPermissao = @IdPermissao";
+                 cmd.CommandType = System.Data.CommandType.Text;
 
-                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idPermissao);
+                cmd.Parameters.AddWithValue("@IdPermissao", _idPermissao);
                 cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
                 cn.Open();
 
