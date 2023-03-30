@@ -89,8 +89,6 @@ using Models;
                     try
                     {
                         cmd.CommandType = System.Data.CommandType.Text;
-
-
                         cmd.Parameters.AddWithValue("@Id", _id);
 
                         if (_transaction == null)
@@ -99,9 +97,12 @@ using Models;
                             transaction = cn.BeginTransaction();
 
                         }
-                        cmd.Trasnsaction = transaction();
-                        cmd.transction = transaction.Connection;
-
+                        cmd.Transaction = transaction();
+                        cmd.Connection = transaction.Connection;
+                        
+                        RemoverGrupoPermissao(-Id, transaction);
+                        cmd.ExecuteNonQuery();
+                        
                     }
                     catch (Exception ex)
                     {
