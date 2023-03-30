@@ -114,6 +114,7 @@ INSERT INTO UsuarioGrupoUsuario(IdUsuario,IdGrupoUsuario) VALUES(11,2)
 
 
 
+
 SELECT * FROM Usuario
 SELECT * FROM UsuarioGrupoUsuario
 SELECT * FROM PermissaoGrupoUsuario
