@@ -79,29 +79,40 @@ using Models;
         }
         public void Excluir(int _id)
 
-        {
-            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-            try
+        {   SqlTransaction transaction = null;
+            using (SqlConnection cn = new SqlConnection(Conexao.stringDeConexao))
             {
-                SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "DELETE FROM Usuario WHERE ID = @Id";
-                cmd.CommandType = System.Data.CommandType.Text;
 
-                cmd.Parameters.AddWithValue("@Id", _id);
 
-                cmd.Connection = cn;
-                cn.Open();
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM PermissaoGrupousuario WHERE IgrupoUsuario = @IdGrupoUsuario", cn))
+                {
+                    try
+                    {
+                        cmd.CommandType = System.Data.CommandType.Text;
 
-                cmd.ExecuteNonQuery();
+
+                        cmd.Parameters.AddWithValue("@Id", _id);
+
+                        if (_transaction == null)
+                        {
+                            cn.Open();
+                            transaction = cn.BeginTransaction();
+
+                        }
+                        cmd.Trasnsaction = transaction();
+                        cmd.transction = transaction.Connection;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Ocorreu erro ao tentar excluir um usuario no banco de dados. Por favor verifique sua conexão", ex);
+                    }
+
+
+                }
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu erro ao tentar excluir um usuario no banco de dados. Por favor verifique sua conexão", ex);
-            }
-            finally
-            {
-                cn.Close();
-            }
+           
 
         }
         public List<Usuario> BuscarPorTodos()
