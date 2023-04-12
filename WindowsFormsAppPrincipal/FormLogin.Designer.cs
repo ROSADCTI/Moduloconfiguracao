@@ -104,6 +104,7 @@
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.Size = new System.Drawing.Size(198, 20);
             this.textBoxUsuario.TabIndex = 5;
+            
             // 
             // textBoxSenha
             // 
@@ -113,6 +114,7 @@
             this.textBoxSenha.PasswordChar = '*';
             this.textBoxSenha.Size = new System.Drawing.Size(198, 20);
             this.textBoxSenha.TabIndex = 6;
+            
             // 
             // FormLogin
             // 
@@ -136,7 +138,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Login";
-            this.Load += new System.EventHandler(this.FormLogin_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

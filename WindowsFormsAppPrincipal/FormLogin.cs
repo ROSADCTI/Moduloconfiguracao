@@ -35,14 +35,12 @@ namespace WindowsFormsAppPrincipal
             }
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void buttonCencelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        
     }
 }

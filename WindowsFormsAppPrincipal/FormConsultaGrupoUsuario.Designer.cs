@@ -48,7 +48,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(32, 115);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 20);
+            this.label1.Size = new System.Drawing.Size(187, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "Informe o  nome do grupo:";
             // 
@@ -60,7 +60,7 @@
             this.label1ConsultaGrupoUsuario.Location = new System.Drawing.Point(0, 0);
             this.label1ConsultaGrupoUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1ConsultaGrupoUsuario.Name = "label1ConsultaGrupoUsuario";
-            this.label1ConsultaGrupoUsuario.Size = new System.Drawing.Size(442, 46);
+            this.label1ConsultaGrupoUsuario.Size = new System.Drawing.Size(358, 37);
             this.label1ConsultaGrupoUsuario.TabIndex = 0;
             this.label1ConsultaGrupoUsuario.Text = "Consulta Grupo usuário";
             this.label1ConsultaGrupoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,12 +136,12 @@
             // 
             this.textBoxBuscar.Location = new System.Drawing.Point(32, 134);
             this.textBoxBuscar.Name = "textBoxBuscar";
-            this.textBoxBuscar.Size = new System.Drawing.Size(245, 26);
+            this.textBoxBuscar.Size = new System.Drawing.Size(245, 22);
             this.textBoxBuscar.TabIndex = 6;
             // 
             // FormConsultaGrupoUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 440);
             this.Controls.Add(this.label1);
