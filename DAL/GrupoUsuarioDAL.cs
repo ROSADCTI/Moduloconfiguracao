@@ -41,8 +41,6 @@ namespace DAL
 
         }
 
-
-
         public void Alterar(GrupoUsuario _grupousuario)
         {
             SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
@@ -71,31 +69,53 @@ namespace DAL
                 cn.Close();
             }
         }
-        public void Excluir(int _id)
+        public void Excluir(int _idGrupoUsuario, SqlTransaction _transaction = null)
         {
-            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
-
-            try
+            SqlTransaction transaction = _transaction;
+            using (SqlConnection cn = new SqlConnection(Conexao.stringDeConexao))
             {
-                SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "DELETE FROM GrupoUsuario WHERE Id = @Id";
-                cmd.CommandType = System.Data.CommandType.Text;
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM GrupoUsuario WHERE Id = @Id", cn)) ;
+                {
+                    try
+                    {
+                        cmd.CommandType = System.Data.CommandType.Text;
 
-                cmd.Parameters.AddWithValue("@Id", _id);
+                        cmd.Parameters.AddWithValue("@Id", _idGrupoUsuario);
 
-                cmd.Connection = cn;
-                cn.Open();
-                cmd.ExecuteNonQuery();
+                        if (_transaction != null)
+                        {
+                            cn.Open();
+                            transaction.Rollback();
+
+                        }
+                        cmd.Transaction = transaction;
+                        cmd.Connection = cn;
+
+                        RemoverGrupoPermissao(_idGrupoUsuario, transaction);
+                        RemoverTodoUsuario(_idGrupoUsuario, transaction);
+                        cmd.ExecuteNonQuery();
+
+                        if (_transaction != null);
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O correu um erro na tentativa de exluir um usuário.por favor verifique sua conexão", ex);
+                    }
+                    transaction.Commit();
+                  
+
+                }
 
             }
-            catch (Exception ex)
+            private RemoverGrupoPermissao(int _idGrupoUsuario, SqlTransaction _transaction = null)
             {
-                throw new Exception("O correu um erro na tentativa de exluir um usuário.por favor verifique sua conexão", ex);
+                SqlTransaction transaction
             }
-            finally
-            {
-                cn.Close();
-            }
+
+
         }
 
         public List<GrupoUsuario> BuscarPorTodos()
@@ -318,9 +338,9 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
-       public void AdicionarGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
+        public void AdicionarGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
         {
-        SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
+            SqlConnection cn = new SqlConnection(Conexao.stringDeConexao);
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -342,6 +362,7 @@ namespace DAL
             {
                 cn.Close();
             }
-       }
+        }
+
     }
-}        
+}   
